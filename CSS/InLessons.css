@@ -1,0 +1,119 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+
+.navbar {
+    background-color: #666;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.complite {
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ddd;
+}
+
+.content{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.content p{
+    line-height: 50px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.row.reverse {
+    flex-direction: row-reverse;
+}
+
+.lesson-image, .lesson-image2 {
+    flex: 1;
+    text-align: center;
+}
+
+.lesson-image img, .lesson-image2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.p2, .p3 {
+    flex: 2;
+    margin: 0 20px;
+    text-align: justify;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    
+    height: 50px;
+    width: 120px;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #f5f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }

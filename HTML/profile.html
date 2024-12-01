@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - COMPLITE</title>
+    <link rel="stylesheet" href="/CSS/profile.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <div class="logo">Logo</div>
+                <div class="complite">COMPLITE</div>
+            </div>
+            <div class="nav-links">
+                <a href="inbox.html">Inbox</a>
+                <a href="/HTML/Lessons.html">Lessons</a>
+                <a href="/HTML/Activity.html">Activities</a>
+                <a href="about.html">About</a>
+                <a href="profile.html">Profile</a>
+            </div>
+        </div>
+    </nav>
+    <section class="profile">
+        <div class="profile-container">
+            <div class="profile-picture">
+                <img src="/path/to/profile-picture.jpg" alt="Profile Picture">
+                <input type="file" id="upload-picture" accept="image/*">
+            </div>
+            <div class="profile-info">
+                <h1 id="profile-name">Your Name</h1>
+                <textarea id="edit-name" class="hidden" placeholder="Enter your name"></textarea>
+                <p id="profile-bio">This is your bio. Describe yourself here!</p>
+                <textarea id="edit-bio" class="hidden" placeholder="Edit your bio"></textarea>
+                <button id="edit-button">Edit Profile</button>
+                <button id="save-button" class="hidden">Save</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 COMPLITE. All rights reserved.</p>
+    </footer>
+    <script src="/JS/profile.js"></script>
+</body>
+</html>
