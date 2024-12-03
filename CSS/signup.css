@@ -105,10 +105,27 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.3s ease;
+    width: 100%;
 }
 
 .login-btn:hover {
     transform: translateY(-3px);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-light);
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 480px) {

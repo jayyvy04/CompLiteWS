@@ -1,0 +1,93 @@
+:root {
+    --primary-color: #FFFF00;
+    --secondary-color: #4a90e2;
+    --bg-light: #FFFFFF;
+    --nav-bg: #4a4a4a;
+    --text-dark: #1a1a2e;
+    --text-light: #d1d1d1;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --card-hover: rgba(0, 0, 0, 0.1);
+}
+
+body.theme-light {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.header-bottom.theme-light {
+    background-color: var(--nav-bg);
+}
+
+.theme-light .nav-link {
+    color: var(--text-light);
+}
+
+.theme-light .nav-link::after {
+    background-color: var(--primary-color);
+}
+
+.theme-light .logo {
+    color: var(--text-light);
+}
+
+.theme-light .logo:hover {
+    color: var(--primary-color);
+}
+
+.theme-light .profile-picture,
+.theme-light .profile-details {
+    background-color: var(--card-bg);
+}
+
+.theme-light .profile-picture:hover,
+.theme-light .profile-details:hover {
+    background-color: var(--card-hover);
+}
+
+.theme-light .profile-picture img {
+    border-color: var(--primary-color);
+}
+
+.theme-light .upload-label {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+}
+
+.theme-light .profile-details h1 {
+    color: var(--primary-color);
+}
+
+.theme-light .profile-detail {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-light .detail-label {
+    color: var(--text-light);
+}
+
+.theme-light .edit-button {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+}
+
+.theme-light .footer {
+    background-color: var(--nav-bg);
+}
+
+.theme-light .footer-section h3 {
+    color: var(--primary-color);
+}
+
+.theme-light .footer-links a,
+.theme-light .footer-section a {
+    color: var(--text-light);
+}
+
+.theme-light .footer-links a:hover,
+.theme-light .footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.theme-light .footer-bottom {
+    border-color: rgba(0, 0, 0, 0.1);
+}

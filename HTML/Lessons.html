@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lessons - COMPLITE</title>
-    <link rel="stylesheet" href="/CSS/Lessons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+    <link href="/CSS/Lessons.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="nav-brand">
-                <div class="logo">Logo</div>
-                <div class="complite">COMPLITE</div>
-            </div>
-            <div class="nav-links">
-                <a href="inbox.html">Inbox</a>
-                <a href="/HTML/Lessons.html">Lessons</a>
-                <a href="/HTML/Activity.html">Activities</a>
-                <a href="about.html">About</a>
-                <a href="profile.html">Profile</a>
-            </div>
+    <header class="header-bottom">
+        <div class="container">
+            <a href="#" class="logo">COMPLITE</a>
+            <nav class="navbar">
+                <a href="/HTML/main.html" class="nav-link">Home</a>
+                <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
+                <a href="/HTML/Activity.html" class="nav-link">Activities</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Profile</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <div class="main-content">
         <div class="content-header">
@@ -29,33 +27,47 @@
             <p>Explore our interactive learning materials</p>
         </div>
 
-        <div class="grid-container">
-            <a href="/lesson/1" class="grid-item">
+        <div class="card-grid">
+            <a href="/lesson/1" class="lesson-card">
                 <img src="/api/placeholder/400/200" alt="Lesson 1">
-                <div class="grid-item-content">
-                    <h3>Lesson 1</h3>
-                    <p>chuchuchuchu chuchuchuchu</p>
+                <div class="lesson-card-content">
+                    <h3>Introduction to Coding</h3>
+                    <p>Learn the fundamental concepts of programming</p>
                 </div>
             </a>
-            <a href="/lesson/2" class="grid-item">
+            <a href="/lesson/2" class="lesson-card">
                 <img src="/api/placeholder/400/200" alt="Lesson 2">
-                <div class="grid-item-content">
-                    <h3>Lesson 2</h3>
-                    <p>chuchuchuchu chuchuchuchu</p>
+                <div class="lesson-card-content">
+                    <h3>Web Development Basics</h3>
+                    <p>Understand HTML, CSS, and JavaScript</p>
                 </div>
             </a>
-            <a href="/lesson/3" class="grid-item">
+            <a href="/lesson/3" class="lesson-card">
                 <img src="/api/placeholder/400/200" alt="Lesson 3">
-                <div class="grid-item-content">
-                    <h3>Lesson 3</h3>
-                    <p>chuchuchuchu chuchuchuchu</p>
+                <div class="lesson-card-content">
+                    <h3>Data Structures</h3>
+                    <p>Explore essential data organization techniques</p>
                 </div>
             </a>
-            <a href="/lesson/4" class="grid-item">
+            <a href="/lesson/4" class="lesson-card">
                 <img src="/api/placeholder/400/200" alt="Lesson 4">
-                <div class="grid-item-content">
-                    <h3>Lesson 4</h3>
-                    <p>chuchuchuchu chuchuchuchu</p>
+                <div class="lesson-card-content">
+                    <h3>Python Programming</h3>
+                    <p>Master the Python programming language</p>
+                </div>
+            </a>
+            <a href="/lesson/5" class="lesson-card">
+                <img src="/api/placeholder/400/200" alt="Lesson 5">
+                <div class="lesson-card-content">
+                    <h3>Algorithm Design</h3>
+                    <p>Learn problem-solving through algorithms</p>
+                </div>
+            </a>
+            <a href="/lesson/6" class="lesson-card">
+                <img src="/api/placeholder/400/200" alt="Lesson 6">
+                <div class="lesson-card-content">
+                    <h3>Advanced Web Frameworks</h3>
+                    <p>Dive into modern web development frameworks</p>
                 </div>
             </a>
         </div>
@@ -70,9 +82,11 @@
             <div class="footer-section">
                 <h3>Navigation</h3>
                 <ul class="footer-links">
-                    <li><a href="/HTML/main.html">Home</a></li>
-                    <li><a href="/HTML/Lessons.html">Lessons</a></li>
-                    <li><a href="/HTML/Activity.html">Activities</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Lessons</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Activities</a></li>
+                    <li><a href="#">Profile</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -85,5 +99,6 @@
             <p>&copy; 2024 COMPLITE. All rights reserved.</p>
         </div>
     </footer>
+    <script src="/JS/lesson.js"></script>
 </body>
 </html>
