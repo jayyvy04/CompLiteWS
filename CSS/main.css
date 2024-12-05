@@ -1,12 +1,14 @@
 :root {
     --primary-color: #ffd700;
     --secondary-color: #4a90e2;
-    --bg-dark: #1a1a2e;
-    --nav-bg: #252542;
+    --bg-dark: #FFFEFA;
+    --nav-bg: #0D4DD6;
     --text-white: #ffffff;
+    --text-header:#0D4DD6;
+    --text-dark: #001d5c;
     --text-light: #d1d1d1;
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --card-hover: rgba(255, 255, 255, 0.1);
+    --card-bg: #0d4dd6;
+    --card-hover: #001d5c;
 }
 
 * {
@@ -79,24 +81,34 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
-.logo {
-    font-family: 'Oxanium', cursive;
-    font-size: 2.5rem;
-    font-weight: 800;
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
     color: var(--text-white);
+}
+
+.logo-image {
+    height: 40px;
+    margin-right: 12px;
+}
+
+.logo-text {
+    font-family: 'Oxanium', cursive;
+    font-size: 40px;
+    font-weight: 800;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.logo:hover {
+.logo-text:hover {
     color: var(--primary-color);
 }
 
 
 
 .hero {
-    background-color: #1A1B26;
+    background-color: #141c71;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -126,7 +138,7 @@ body {
 .welcome-text {
     font-size: 3.5rem;
     color: #FFFFFF;
-    margin-bottom: 1rem;
+    margin-bottom: -20px;
     font-weight: 700;
 }
 
@@ -200,6 +212,10 @@ body {
     gap: 2rem;
     margin-top: 2rem;
 }
+.h2.section-title{
+    margin-top: 40px;
+    color: var(--text-header);
+}
 
 .lesson-card, .activity-card {
     background-color: var(--card-bg);
@@ -207,7 +223,9 @@ body {
     border-radius: 8px;
     text-decoration: none;
     color: var(--text-white);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .lesson-card:hover, .activity-card:hover {
@@ -218,7 +236,8 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--nav-bg);
+    background-color: #ffff2f;
+    color: #0D4DD6;
     padding: 60px 0 20px;
     margin-top: 4rem;
 }
@@ -236,13 +255,13 @@ body {
 }
 
 .footer-link {
-    color: var(--text-light);
+    color: var(--card-bg);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    color: var(--primary-color);
+    color: var(--text-dark);
 }
 
 /* Animations */
