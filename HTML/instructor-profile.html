@@ -1,0 +1,564 @@
+<!--Profile Page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - COMPLITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+    
+    <style>
+     :root {
+            --primary-color: #ffd700;
+            --secondary-color: #4a90e2;
+            --bg-dark: #1a1a2e;
+            --nav-bg: #252542;
+            --text-white: #ffffff;
+            --text-light: #d1d1d1;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-hover: rgba(255, 255, 255, 0.1);
+        }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.5;
+}
+
+/* Navigation Styles (Copied from original CSS) */
+.header-bottom {
+    background-color: var(--nav-bg);
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.container {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.logo {
+    font-family: 'Oxanium', cursive;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--primary-color);
+}
+
+.logout-link {
+            color: #ff4d4d;
+        }
+
+        .logout-link:hover {
+            color: #ff1a1a;
+        }
+
+
+/* Profile Container Styles */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px 20px 50px;
+    background-color: var(--bg-dark);
+    gap: 4rem;
+}
+
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.profile-picture:hover {
+    background-color: var(--card-hover);
+    transform: translateY(-5px);
+}
+
+.profile-picture img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid var(--primary-color);
+}
+
+.upload-label {
+    background-color: var(--primary-color);
+    color: #000000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.upload-label:hover {
+    transform: translateY(-3px);
+}
+
+#upload-picture {
+    display: none;
+}
+
+.profile-details {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 500px;
+    transition: all 0.3s ease;
+}
+
+.profile-details:hover {
+    background-color: var(--card-hover);
+    transform: translateY(-5px);
+}
+
+.profile-details h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.profile-detail {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.detail-label {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-value {
+    font-weight: 600;
+}
+
+.edit-button {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #000000;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.edit-button:hover {
+    transform: translateY(-3px);
+}
+
+/* Footer Styles (Copied from original CSS) */
+.footer {
+    background-color: var(--nav-bg);
+    padding: 60px 0 20px;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a, .footer-section a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover, .footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-details {
+        width: 100%;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--nav-bg);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+}
+.modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--nav-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 500px;
+            max-width: 90%;
+        }
+
+        .modal-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: var(--card-bg);
+            border: none;
+            color: var(--text-white);
+            border-radius: 8px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .modal-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-button.save {
+            background-color: var(--primary-color);
+            color: #000000;
+        }
+
+        .modal-button.cancel {
+            background-color: var(--card-bg);
+            color: var(--text-white);
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header-bottom">
+        <div class="container">
+            <div class="logo">COMPLITE</div>
+            <nav class="navbar">
+                <a href="/HTML/instructor-main.html" class="nav-link">Dashboard</a>
+                <a href="/HTML/instructor-section.html" class="nav-link">Section</a>
+                <a href="/HTML/instructor-profile.html" class="nav-link">Profile</a>
+                <a href="#" id="logoutBtn" class="nav-link logout-link">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-picture">
+            <img src="/path/to/profile-picture.jpg" id="profileImage" alt="Profile Picture">
+            <label for="upload-picture" class="upload-label">Change Picture</label>
+            <input type="file" id="upload-picture" accept="image/*">
+        </div>
+        <div class="profile-details">
+            <h1>User Profile</h1>
+            <div class="detail-grid">
+                <div class="profile-detail">
+                    <span class="detail-label">Username</span>
+                    <span class="detail-value" id="username">complite_user</span>
+                </div>
+                <div class="profile-detail">
+                    <span class="detail-label">Full Name</span>
+                    <span class="detail-value" id="full-name">John Doe</span>
+                </div>
+                <div class="profile-detail">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value" id="email">john.doe@complite.com</span>
+                </div>
+                <div class="profile-detail">
+                    <span class="detail-label">Sex</span>
+                    <span class="detail-value" id="sex">Male</span>
+                </div>
+                <div class="profile-detail">
+                    <span class="detail-label">Birth Date</span>
+                    <span class="detail-value" id="birth-date">January 15, 1990</span>
+                </div>
+            </div>
+            <button class="edit-button" id="editProfileBtn">Edit Profile</button>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Profile</h2>
+            <form class="modal-form" id="editProfileForm">
+                <input type="text" id="editFullName" placeholder="Full Name" required>
+                <input type="email" id="editEmail" placeholder="Email" required>
+                <select id="editSex">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="date" id="editBirthDate" required>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-button cancel" id="cancelEditBtn">Cancel</button>
+                    <button type="submit" class="modal-button save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About COMPLITE</h3>
+                <p>Educational platform dedicated to interactive learning</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="/HTML/instructor-main.html">Dashboard</a></li>
+                    <li><a href="/HTML/Lessons.html">Lessons</a></li>
+                    <li><a href="/HTML/Activity.html">Activities</a></li>
+                    <li><a href="/HTML/Activity.html">About</a></li>
+                    <li><a href="/HTML/Activity.html">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@complite.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 COMPLITE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Basic logout functionality
+            localStorage.removeItem('currentUser');
+            window.location.href = '/HTML/login.html'; // Redirect to login page
+        });
+
+        // Edit Profile Functionality
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const editProfileModal = document.getElementById('editProfileModal');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const editProfileForm = document.getElementById('editProfileForm');
+
+        // Profile Picture Upload
+        const uploadPictureInput = document.getElementById('upload-picture');
+        const profileImage = document.getElementById('profileImage');
+
+        // Edit Profile Modal Open
+        editProfileBtn.addEventListener('click', () => {
+            // Populate current values
+            document.getElementById('editFullName').value = document.getElementById('full-name').textContent;
+            document.getElementById('editEmail').value = document.getElementById('email').textContent;
+            document.getElementById('editSex').value = document.getElementById('sex').textContent;
+            
+            // Convert birth date to input date format
+            const birthDate = document.getElementById('birth-date').textContent;
+            const [month, day, year] = birthDate.split(/[, ]+/);
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const monthIndex = monthNames.indexOf(month);
+            const formattedDate = `${year}-${String(monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            document.getElementById('editBirthDate').value = formattedDate;
+
+            editProfileModal.style.display = 'flex';
+        });
+
+        // Cancel Edit
+        cancelEditBtn.addEventListener('click', () => {
+            editProfileModal.style.display = 'none';
+        });
+
+        // Save Profile Changes
+        editProfileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Update profile details
+            document.getElementById('full-name').textContent = document.getElementById('editFullName').value;
+            document.getElementById('email').textContent = document.getElementById('editEmail').value;
+            document.getElementById('sex').textContent = document.getElementById('editSex').value;
+
+            // Convert date back to readable format
+            const birthDate = document.getElementById('editBirthDate').value;
+            const [year, month, day] = birthDate.split('-');
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const formattedDate = `${monthNames[parseInt(month) - 1]} ${day}, ${year}`;
+            document.getElementById('birth-date').textContent = formattedDate;
+
+            // Close modal
+            editProfileModal.style.display = 'none';
+
+            // Optional: Save to localStorage or send to backend
+            const updatedProfile = {
+                fullName: document.getElementById('editFullName').value,
+                email: document.getElementById('editEmail').value,
+                sex: document.getElementById('editSex').value,
+                birthDate: formattedDate
+            };
+            localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
+        });
+
+        // Profile Picture Upload
+        uploadPictureInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    profileImage.src = event.target.result;
+                    // Optional: Save image to localStorage
+                    localStorage.setItem('profilePicture', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Load saved profile and picture on page load
+        window.addEventListener('load', () => {
+            // Load profile from localStorage
+            const savedProfile = localStorage.getItem('userProfile');
+            if (savedProfile) {
+                const profile = JSON.parse(savedProfile);
+                document.getElementById('full-name').textContent = profile.fullName;
+                document.getElementById('email').textContent = profile.email;
+                document.getElementById('sex').textContent = profile.sex;
+                document.getElementById('birth-date').textContent = profile.birthDate;
+            }
+
+            // Load profile picture
+            const savedProfilePicture = localStorage.getItem('profilePicture');
+            if (savedProfilePicture) {
+                profileImage.src = savedProfilePicture;
+            }
+        });
+    </script>
+</body>
+</html>
