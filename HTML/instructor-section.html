@@ -1,0 +1,253 @@
+<!--Section page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sections Management - COMPLITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="/CSS/instructor-section.css" rel ="stylesheet">
+</head>
+<body>
+    <header class="header-bottom">
+        <div class="container">
+            <a href="#" class="logo">COMPLITE</a>
+            <nav class="navbar">
+                <a href="/HTML/instructor-main.html" class="nav-link">Dashboard</a>
+                <a href="/HTML/instructor-section.html" class="nav-link">Sections</a>
+                <a href="#" class="nav-link">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sections-header">
+            <h1>Sections Management</h1>
+            <button id="createSectionBtn" class="btn">Create New Section</button>
+        </div>
+
+        <table class="sections-table">
+            <thead>
+                <tr>
+                    <th>Section Name</th>
+                    <th>Section Code</th>
+                    <th>Created Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="sectionsTableBody">
+                <!-- Sections will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Create Section Modal -->
+    <div id="createSectionModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="sectionManager.hideModal('createSectionModal')">×</span>
+            <h2>Create New Section</h2>
+            <form id="createSectionForm">
+                <input type="text" class="form-input" id="sectionName" placeholder="Section Name" required>
+                <input type="text" class="form-input" id="sectionSubject" placeholder="Subject" required>
+                <button type="submit" class="btn">Create Section</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Students Modal -->
+    <div id="studentsModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="sectionManager.hideModal('studentsModal')">×</span>
+            <h2 id="sectionStudentsTitle">Students in Section</h2>
+            <div class="students-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Grades</th>
+                            <th>Points</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sectionStudentsList">
+                        <!-- Students will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>COMPLITE</h4>
+                <p>An innovative learning management platform designed to streamline education and enhance student-professor interactions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Sections</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 COMPLITE. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        class SectionManager {
+            constructor() {
+                this.sections = this.loadSections();
+                this.setupEventListeners();
+                this.renderSections();
+            }
+
+            setupEventListeners() {
+                const createSectionBtn = document.getElementById('createSectionBtn');
+                const createSectionModal = document.getElementById('createSectionModal');
+                const createSectionForm = document.getElementById('createSectionForm');
+
+                createSectionBtn.addEventListener('click', () => {
+                    createSectionModal.style.display = 'flex';
+                });
+
+                createSectionForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.createSection(
+                        document.getElementById('sectionName').value,
+                        document.getElementById('sectionSubject').value
+                    );
+                });
+
+                // Close modals when clicking outside
+                window.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal')) {
+                        this.hideModal(e.target.id);
+                    }
+                });
+            }
+
+            loadSections() {
+                const savedSections = localStorage.getItem('createdSections');
+                return savedSections ? JSON.parse(savedSections).map(section => ({
+                    ...section,
+                    createdDate: new Date(section.createdDate)
+                })) : [];
+            }
+
+            generateSectionCode() {
+                return Math.random().toString(36).substring(2, 8).toUpperCase();
+            }
+
+            createSection(name, subject) {
+                const newSection = {
+                    id: Date.now(),
+                    name: name,
+                    description: subject,
+                    subject: subject,
+                    code: this.generateSectionCode(),
+                    createdDate: new Date(),
+                    students: []
+                };
+
+                this.sections.push(newSection);
+                this.saveSections();
+                this.renderSections();
+                this.hideModal('createSectionModal');
+
+                localStorage.setItem('createdSections', JSON.stringify(this.sections));
+                window.dispatchEvent(new Event('storage'));
+            }
+
+            saveSections() {
+                localStorage.setItem('createdSections', JSON.stringify(this.sections));
+            }
+
+            renderSections() {
+                const tableBody = document.getElementById('sectionsTableBody');
+                tableBody.innerHTML = '';
+
+                this.sections.forEach(section => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${section.name}</td>
+                        <td>${section.code}</td>
+                        <td>${section.createdDate.toLocaleDateString()}</td>
+                        <td>
+                            <button class="action-btn view-btn" onclick="sectionManager.viewStudents(${section.id})">
+                                View Students
+                            </button>
+                            <button class="action-btn delete-btn" onclick="sectionManager.deleteSection(${section.id})">
+                                Delete
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            deleteSection(sectionId) {
+                if (confirm('Are you sure you want to delete this section?')) {
+                    this.sections = this.sections.filter(section => section.id !== sectionId);
+                    this.saveSections();
+                    this.renderSections();
+
+                    localStorage.setItem('createdSections', JSON.stringify(this.sections));
+                    window.dispatchEvent(new Event('storage'));
+                }
+            }
+
+            viewStudents(sectionId) {
+                const section = this.sections.find(s => s.id === sectionId);
+                const studentsModal = document.getElementById('studentsModal');
+                const studentsTitle = document.getElementById('sectionStudentsTitle');
+                const studentsList = document.getElementById('sectionStudentsList');
+
+                studentsTitle.textContent = `Students in ${section.name}`;
+                studentsList.innerHTML = '';
+
+                section.students.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.name}</td>
+                        <td>${student.grade}</td>
+                        <td>${student.points}</td>
+                        <td>
+                            <button class="action-btn delete-btn">Remove</button>
+                        </td>
+                    `;
+                    studentsList.appendChild(row);
+                });
+
+                studentsModal.style.display = 'flex';
+            }
+
+            hideModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+        }
+
+        // Initialize section manager
+        const sectionManager = new SectionManager();
+    </script>
+</body>
+</html>

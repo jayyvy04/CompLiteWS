@@ -1,0 +1,225 @@
+
+<!-- dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dashboard - COMPLITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
+    <link href="/CSS/instructor-main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-bottom">
+        <div class="container">
+            <a href="#" class="logo">COMPLITE</a>
+            <nav class="navbar">
+                <a href="#" class="nav-link">Dashboard</a>
+                <a href="/HTML/instructor-section.html" class="nav-link">Sections</a>
+                <a href="#" class="nav-link">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content container">
+        <div class="content-header">
+            <h1>Professor Dashboard</h1>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Sections Container -->
+            <div class="sections-container">
+                <h2>Your Sections</h2>
+                <div id="sectionsGrid" class="card-grid">
+                    <div class="empty-sections">
+                        <p>No sections have been created yet.</p>
+                        <p>Go to the Sections page to create your first section.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News and Calendar Container -->
+            <div class="news-container">
+                <h2>Recent Student News</h2>
+                <div id="studentNews">
+                    <!-- Only Student-Generated News Will Be Added Here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Container -->
+        <div class="calendar-container">
+            <h2>Activity Calendar</h2>
+            <div id="calendar"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>COMPLITE</h4>
+                <p>An innovative learning management platform designed to streamline education and enhance student-professor interactions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Sections</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 COMPLITE. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <script>
+        // Function to render sections (to be used when sections are created)
+        function renderSections(sections) {
+            const sectionsGrid = document.getElementById('sectionsGrid');
+            sectionsGrid.innerHTML = ''; // Clear existing content
+
+            if (sections.length === 0) {
+                // If no sections, show empty state
+                const emptyState = document.createElement('div');
+                emptyState.classList.add('empty-sections');
+                emptyState.innerHTML = `
+                    <p>No sections have been created yet.</p>
+                    <p>Go to the Sections page to create your first section.</p>
+                `;
+                sectionsGrid.appendChild(emptyState);
+            } else {
+                // Render sections
+                sections.forEach(section => {
+                    const sectionCard = document.createElement('div');
+                    sectionCard.classList.add('section-card');
+                    sectionCard.innerHTML = `
+                        <div class="section-card-content">
+                            <h3>${section.name}</h3>
+                            <p>${section.description}</p>
+                            <small>Section Code: ${section.code}</small>
+                        </div>
+                    `;
+                    
+                    // View Section Details (placeholder)
+                    sectionCard.addEventListener('click', () => {
+                        alert(`Viewing details for ${section.name}`);
+                    });
+
+                    sectionsGrid.appendChild(sectionCard);
+                });
+            }
+        }
+
+        // Calendar Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                height: 350,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                },
+                events: [
+                    { title: 'Web Dev Quiz', date: '2024-02-15' },
+                    { title: 'React Project Due', date: '2024-02-28' }
+                ]
+            });
+            calendar.render();
+        });
+
+        // Student News Tracker
+        class StudentNewsTracker {
+            constructor() {
+                this.studentNews = [];
+            }
+
+            addStudentNews(studentName, activity, timestamp) {
+                const newsItem = {
+                    studentName,
+                    activity,
+                    timestamp
+                };
+
+                this.studentNews.unshift(newsItem);
+                this.renderNews();
+            }
+
+            renderNews() {
+                const newsContainer = document.getElementById('studentNews');
+                newsContainer.innerHTML = '';
+
+                this.studentNews.slice(0, 5).forEach(news => {
+                    const newsElement = document.createElement('div');
+                    newsElement.classList.add('news-item');
+                    newsElement.innerHTML = `
+                        <div class="news-item-content">
+                            <strong>${news.studentName}</strong> ${news.activity}
+                        </div>
+                        <div class="news-item-date">
+                            ${news.timestamp.toLocaleString()}
+                        </div>
+                    `;
+                    newsContainer.appendChild(newsElement);
+                });
+            }
+        }
+
+        // Initialize student news tracker
+        const newsTracker = new StudentNewsTracker();
+
+        // Simulate some student news
+        setTimeout(() => {
+            newsTracker.addStudentNews(
+                'Emily Johnson', 
+                'completed React project in Web Development Fundamentals', 
+                new Date()
+            );
+            newsTracker.addStudentNews(
+                'Michael Chen', 
+                'submitted assignment in Advanced React Programming', 
+                new Date()
+            );
+        }, 1000);
+
+        // Listener for sections from sections page
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'createdSections') {
+                const sections = JSON.parse(event.newValue);
+                renderSections(sections);
+            }
+        });
+
+        // Check for existing sections on load
+        const existingSections = localStorage.getItem('createdSections');
+        if (existingSections) {
+            renderSections(JSON.parse(existingSections));
+        }
+    </script>
+</body>
+</html>
