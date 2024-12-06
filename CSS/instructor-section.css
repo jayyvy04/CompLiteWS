@@ -7,6 +7,8 @@
     --text-light: #d1d1d1;
     --card-bg: rgba(255, 255, 255, 0.05);
     --card-hover: rgba(255, 255, 255, 0.1);
+    --success-color: #28a745;
+    --danger-color: #dc3545;
 }
 
 * {
@@ -86,6 +88,14 @@ body {
 
 .nav-link:hover::after {
     width: 100%;
+}
+/* Logout Link Specific Styles */
+.logout-link {
+    color: #ff4d4d;
+}
+
+.logout-link:hover {
+    color: #ff1a1a;
 }
 
 /* Main Content Styles */
@@ -172,7 +182,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Updated Modal Styles */
 .modal {
     position: fixed;
     top: 0;
@@ -248,7 +257,7 @@ body {
     margin-top: auto;
 }
 
-.footer-container {
+.footer-content {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -257,7 +266,7 @@ body {
     padding: 4rem 15px;
 }
 
-.footer-section h4 {
+.footer-section h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
@@ -306,12 +315,16 @@ body {
 }
 
 .delete-btn {
-    background-color: #dc3545;
+    background-color: var(--danger-color);
+    color: var(--text-white);
 }
 
 .delete-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
 }
+
 .view-btn {
     background-color: var(--success-color);
     color: var(--text-white);
@@ -321,15 +334,4 @@ body {
     background-color: #218838;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
-}
-
-.delete-btn {
-    background-color: var(--danger-color);
-    color: var(--text-white);
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
 }
