@@ -242,6 +242,10 @@ body {
     margin-top: 4rem;
 }
 
+.about-text{
+    margin-top: 10px;
+}
+
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -251,7 +255,8 @@ body {
 .footer-nav {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    margin-top: 10px;
+    gap: 8px;
 }
 
 .footer-link {
