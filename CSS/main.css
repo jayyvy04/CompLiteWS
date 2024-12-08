@@ -1,13 +1,12 @@
 :root {
-    --primary-color: #ffd700;
-    --secondary-color: #4a90e2;
-    --bg-dark: #FFFEFA;
+    --primary-color: #ffe600;
+    --mainbg: #0c1686;
     --nav-bg: #0D4DD6;
     --text-white: #ffffff;
     --text-header:#0D4DD6;
     --text-dark: #001d5c;
     --text-light: #d1d1d1;
-    --card-bg: #0d4dd6;
+    --card-bg: #ffe600;
     --card-hover: #001d5c;
 }
 
@@ -94,7 +93,7 @@ body {
 }
 
 .logo-text {
-    font-family: 'Oxanium', cursive;
+    font-family: 'Poppins', sans-serif;
     font-size: 40px;
     font-weight: 800;
     text-decoration: none;
@@ -108,7 +107,7 @@ body {
 
 
 .hero {
-    background-color: #141c71;
+    background-color: var(--mainbg);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -137,21 +136,21 @@ body {
 
 .welcome-text {
     font-size: 3.5rem;
-    color: #FFFFFF;
+    color: var(--text-white);
     margin-bottom: -20px;
     font-weight: 700;
 }
 
 .brand-name {
     font-size: 5rem;
-    color: #FFFF00;
+    color: var(--primary-color);
     margin-bottom: 1rem;
     font-weight: 800;
 }
 
 .hero-description {
     font-size: 1.5rem;
-    color: #FFFFFF;
+    color: var(--text-white);
     margin-bottom: 2rem;
 }
 
@@ -159,8 +158,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #FFFF00;
-    color: #000000;
+    background-color: var(--primary-color);
+    color: var(--mainbg);
     padding: 1rem 2rem;
     border-radius: 30px;
     text-decoration: none;
@@ -222,7 +221,7 @@ body {
     padding: 1.5rem;
     border-radius: 8px;
     text-decoration: none;
-    color: var(--text-white);
+    color: var(--text-header);
     transition: all 0.3s ease-in-out;
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -231,13 +230,14 @@ body {
 .lesson-card:hover, .activity-card:hover {
     transform: translateY(-5px);
     background-color: var(--card-hover);
+    color: #FFFFFF;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Footer */
 .footer {
-    background-color: #ffff2f;
-    color: #0D4DD6;
+    background-color: var(--nav-bg);
+    color: var(--text-white);
     padding: 60px 0 20px;
     margin-top: 4rem;
 }
@@ -255,13 +255,13 @@ body {
 }
 
 .footer-link {
-    color: var(--card-bg);
+    color: var(--text-white);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    color: var(--text-dark);
+    color: var(--card-bg);
 }
 
 /* Animations */
