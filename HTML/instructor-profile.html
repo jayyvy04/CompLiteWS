@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - COMPLITE</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
-    <link href="/CSS/instructor-profile.css" rel="stylesheet">
+    <link href="../CSS/instructor-profile.css" rel="stylesheet">
    
 </head>
 <body>
@@ -15,17 +15,17 @@
         <div class="container">
             <div class="logo">COMPLITE</div>
             <nav class="navbar">
-                <a href="/HTML/instructor-main.html" class="nav-link">Dashboard</a>
-                <a href="/HTML/instructor-section.html" class="nav-link">Section</a>
-                <a href="/HTML/instructor-profile.html" class="nav-link">Profile</a>
-                <a href="#" id="logoutBtn" class="nav-link logout-link">Logout</a>
+                <a href="../HTML/instructor-main.html" class="nav-link">Dashboard</a>
+                <a href="../HTML/instructor-section.html" class="nav-link">Section</a>
+                <a href="../HTML/instructor-profile.html" class="nav-link">Profile</a>
+                <a href="#" id="logoutBtn" class="nav-link logout-link" onclick="logout()">Logout</a>
             </nav>
         </div>
     </header>
 
     <div class="profile-container">
         <div class="profile-picture">
-            <img src="/path/to/profile-picture.jpg" id="profileImage" alt="Profile Picture">
+            <img src="../path/to/profile-picture.jpg" id="profileImage" alt="Profile Picture">
             <label for="upload-picture" class="upload-label">Change Picture</label>
             <input type="file" id="upload-picture" accept="image/*">
         </div>
@@ -87,11 +87,11 @@
             <div class="footer-section">
                 <h3>Navigation</h3>
                 <ul class="footer-links">
-                    <li><a href="/HTML/instructor-main.html">Dashboard</a></li>
-                    <li><a href="/HTML/Lessons.html">Lessons</a></li>
-                    <li><a href="/HTML/Activity.html">Activities</a></li>
-                    <li><a href="/HTML/Activity.html">About</a></li>
-                    <li><a href="/HTML/Activity.html">Profile</a></li>
+                    <li><a href="../HTML/instructor-main.html">Dashboard</a></li>
+                    <li><a href="../HTML/Lessons.html">Lessons</a></li>
+                    <li><a href="../HTML/Activity.html">Activities</a></li>
+                    <li><a href="../HTML/Activity.html">About</a></li>
+                    <li><a href="../HTML/Activity.html">Profile</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -105,6 +105,7 @@
         </div>
     </footer>
 
-    <script src="/JS/instructor-profile.js"> </script>
+    <script src="../JS/instructor-profile.js"> </script>
+    <script src="../JS/logout.js"></script>
 </body>
 </html>
