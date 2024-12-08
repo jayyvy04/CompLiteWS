@@ -8,16 +8,21 @@
     <link href="/CSS/InLessons.css" rel="stylesheet">
 </head>
 <body>
-    <header class="header-bottom">
-        <div class="container">
-            <a href="#" class="logo">COMPLITE</a>
-            <nav class="navbar">
-                <a href="/HTML/main.html" class="nav-link">Home</a>
-                <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
-                <a href="/HTML/Activity.html" class="nav-link">Activities</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Profile</a>
-            </nav>
+    <header class="header">
+        <div class="header-bottom">
+            <div class="container">
+                <a href="#" class="logo-container">
+                    <img src="/Resources/Logo.png" alt="COMPLITE Robot Mascot" class="logo-image">
+                    <span class="logo-text">COMPLITE</span>
+                </a>
+                <nav class="navbar">
+                    <a href="/HTML/main.html" class="nav-link">Home</a>
+                    <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
+                    <a href="/HTML/Activity.html" class="nav-link">Activities</a>
+                    <a href="/HTML/About.html" class="nav-link">About</a>
+                    <a href="/HTML/profile.html" class="nav-link">Profile</a>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -133,12 +138,25 @@
                 </div>
             </div>
         </section>
+        
+        <div id="activityModal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h2>Prepare for Activity</h2>
+                <p>You're about to start an activity that will test your understanding of computer parts. Make sure you've carefully read through the lesson and are ready to apply your knowledge.</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+                    <button class="modal-btn" onclick="proceedToActivity()">Start Activity</button>
+                </div>
+            </div>
+        </div>
     </body>
     
     <footer>
         <p>&copy; 2024 COMPLITE. All rights reserved.</p>
     </footer>
     
-    <script src="lessons.js"></script>
+    <script src="/JS/lesson.js"></script>
+    <script src="/JS/activitymodal.js"></script>
 
 </html>

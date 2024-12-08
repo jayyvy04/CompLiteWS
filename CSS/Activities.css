@@ -104,8 +104,6 @@ body {
     color: var(--primary-color);
 }
 
-
-
 .main-content {
     padding: 100px 15px 50px;
 }
@@ -229,7 +227,7 @@ body {
 }
 
 .page-header {
-    padding: 150px 15px 40px;
+    padding: 80px 15px 40px;
     background: linear-gradient(to left, #0D4DD6, #ffe600),url('/Resources/header.png'); /* Swapping the order of gradient and image */
     background-blend-mode: overlay;
     background-size: cover;
