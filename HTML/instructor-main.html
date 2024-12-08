@@ -7,29 +7,19 @@
     <title>Professor Dashboard - COMPLITE</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Oxanium:wght@800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
-    <link href="/CSS/instructor-main.css" rel="stylesheet">
+    <link href="../CSS/instructor-main.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header-bottom">
-        <div class="container">
-            <a href="#" class="logo">COMPLITE</a>
-            <nav class="navbar">
-                <a href="/HTML/instructor-main.html" class="nav-link">Dashboard</a>
-                <a href="/HTML/instructor-section.html" class="nav-link">Sections</a>
-                <a href="/HTML/instructor-profile.html" class="nav-link">Profile</a>
-            </nav>
-        </div>
-    </header>
+   
 
     <header class="header-bottom">
         <div class="container">
             <a href="#" class="logo">COMPLITE</a>
             <nav class="navbar">
-                <a href="/HTML/instructor-main.html" class="nav-link">Dashboard</a>
-                <a href="/HTML/instructor-section.html" class="nav-link">Sections</a>
-                <a href="/HTML/instructor-profile.html" class="nav-link">Profile</a>
-                <a href="#" id="logoutBtn" class="nav-link logout-link">Logout</a>
+                <a href="../HTML/instructor-main.html" class="nav-link">Dashboard</a>
+                <a href="../HTML/instructor-section.html" class="nav-link">Sections</a>
+                <a href="../HTML/instructor-profile.html" class="nav-link">Profile</a>
+                <a href="#" id="logoutBtn" class="nav-link logout-link" onclick="logout()">Logout</a>
             </nav>
         </div>
     </header>
@@ -77,9 +67,9 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="/HTML/instructor-main.html">Dashboard</a></li>
-                    <li><a href="/HTML/instructor-section.html">Sections</a></li>
-                    <li><a href="/HTML/instructor-profile.html">Profile</a></li>
+                    <li><a href="../HTML/instructor-main.html">Dashboard</a></li>
+                    <li><a href="..HTML/instructor-section.html">Sections</a></li>
+                    <li><a href="../HTML/instructor-profile.html">Profile</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
             </div>
@@ -92,14 +82,34 @@
                 <h3>About Us</h3>
                 <p>COMPLITE is dedicated to creating innovative educational experiences and interactive learning platforms.</p>
             </div>
+            <div class="footer-section">
+                <h3>Send a Report</h3>
+                <button id="openReportModal" class="report-btn">Report an Issue</button>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 COMPLITE. All rights reserved.</p>
         </div>
+
     </footer>
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Send a Report</h2>
+            <form id="reportForm">
+                <textarea id="reportMessage" placeholder="Describe your issue or concern" required></textarea>
+                <input type="hidden" id="accountID" name="accountID">
+                <button type="submit" class="submit-btn">Submit Report</button>
+            </form>
+        </div>
+    </div>
+   
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
-    <script src="/JS/instructor-main.js"> </script>
+    <script src="../JS/logout.js"></script>
+    <script src="../JS/report.js"></script>
+    <script src="../JS/instructor-main.js"> </script>
+
 </body>
 </html>

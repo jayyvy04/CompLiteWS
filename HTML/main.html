@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" href="../CSS/main.css">
 </head>
 <body>
     <header class="header">
@@ -139,7 +139,7 @@
                     <nav class="footer-nav">
                     <p>Email: contact@complite.com</p>
                     <p>Phone: (123) 456-7890</p>
-                    <a href="#" class="footer-link"><h3>Send a Report?</h3></a>
+                    <a href="#reportModal" class="footer-link"><h3>Send a Report?</h3></a>
                     </nav>
                 </div>
             </div>
@@ -149,9 +149,23 @@
             </div>
         </div>
     </footer>
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Submit a Report</h2>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="reportMessage">Report Details</label>
+                    <textarea id="reportMessage" name="reportMessage" rows="4" placeholder="Describe your report..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Report</button>
+            </form>
+        </div>
+    </div
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js" nomodule></script>
-    <script src="/JS/main.js"></script>
+    <script src="../JS/main.js"></script>
+    <script src="../JS/report-modal.js"></script>
 </body>
 </html>

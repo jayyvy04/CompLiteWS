@@ -4,119 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/CSS/Admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../CSS/Admin.css" rel="stylesheet">
 </head>
 <body>
-
-<div class="sidebar">
-    <h2>Admin Dashboard</h2>
-    <button onclick="showSection('accountForm')">Account</button>
-    <button onclick="showSection('reportsSection')">Reports</button>
-    <button onclick="showSection('userOverview')">User Overview</button>
-    <button onclick="showSection('courseManagement')">Courses</button>
-    <button onclick="showSection('activities')">Activities</button>
-</div>
-
-<div class="main-content">
-    <!-- Account Form -->
-    <div id="accountForm" class="dashboard-card">
-        <h3>Account</h3>
-        <label class="label">First Name</label>
-        <input type="text" class="input" placeholder="Enter First Name">
-        <label class="label">Last Name</label>
-        <input type="text" class="input" placeholder="Enter Last Name">
-        <label class="label">Middle Name</label>
-        <input type="text" class="input" placeholder="Enter Middle Name">
-        <label class="label">Birthdate</label>
-        <input type="date" class="input">
-        <label class="label">Sex</label>
-        <select class="select">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
-        <label class="label">Email</label>
-        <input type="email" class="input" placeholder="Enter Email">
-        <label class="label">Username</label>
-        <input type="text" class="input" placeholder="Enter Username">
-        <label class="label">Password</label>
-        <input type="password" class="input" placeholder="Enter Password">
-        <label class="label">Account Type</label>
-        <select class="select">
-            <option value="Admin">Admin</option>
-            <option value="Teacher">Teacher</option>
-            <option value="Student">Student</option>
-        </select>
-        <button class="button">Submit</button>
-    </div>
-
-    <!-- Reports Section -->
-    <div id="reportsSection" class="dashboard-card" style="display: none;">
-        <h3>Reports</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Report ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Time and Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr onclick="showReportResponse(1, 'Issue with Login', 'Users cannot log in.', '2024-12-01 10:30 AM')">
-                    <td>1</td>
-                    <td>Issue with Login</td>
-                    <td>Users cannot log in.</td>
-                    <td>2024-12-01 10:30 AM</td>
-                </tr>
-                <tr onclick="showReportResponse(2, 'Website Slow', 'Website is slow during traffic.', '2024-12-02 03:45 PM')">
-                    <td>2</td>
-                    <td>Website Slow</td>
-                    <td>Website is slow during traffic.</td>
-                    <td>2024-12-02 03:45 PM</td>
-                </tr>
-            </tbody>
-        </table>
-        <div id="responseArea" style="display: none;">
-            <label class="label">Response for Report <span id="reportId"></span>: <span id="reportTitle"></span></label>
-            <textarea class="textarea" id="responseText" placeholder="Enter your response here..."></textarea>
-            <button class="button" onclick="submitResponse()">Submit Response</button>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <div class="sidebar-menu">
+            <button class="sidebar-btn active" onclick="showSection('accountForm')">
+                <i class="fas fa-user"></i> Account
+            </button>
+            <button class="sidebar-btn" onclick="showSection('reportsSection')">
+                <i class="fas fa-chart-bar"></i> Reports</button>
+            <button class="sidebar-btn" onclick="showSection('userOverview')">
+                <i class="fas fa-users"></i> User Overview
+            </button>
+            <button class="sidebar-btn logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
         </div>
     </div>
 
-    <!-- User Overview -->
-    <div id="userOverview" class="dashboard-card" style="display: none;">
-        <h3>User Overview</h3>
-        <div class="stat">Total Students: 100</div>
-        <div class="stat">Total Instructors: 20</div>
-        <div class="stat">Total Admins: 5</div>
-    </div>
+    <div class="main-content">
+        <form id="accountCreationForm" method="POST" action="/../process/create_account.php">
+            <div class="dashboard-card" id="accountForm">
+                <h3>Create Account</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" class="form-input" placeholder="Enter First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" class="form-input" placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Middle Name</label>
+                        <input type="text" name="middleName" class="form-input" placeholder="Enter Middle Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Birthdate</label>
+                        <input type="date" name="birthDate" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <select name="sex" class="form-input" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="Enter Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-input" placeholder="Enter Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-input" placeholder="Enter Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Account Type</label>
+                        <select name="accountType" class="form-input" required>
+                            <option value="Admin">Admin</option>
+                            <option value="Instructor">Instructor</option>
+                            <option value="Student">Student</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn" style="width: 100%; margin-top: 20px;">Create Account</button>
+            </div>
+        </form>
 
-    <!-- Course Management -->
-    <div id="courseManagement" class="dashboard-card" style="display: none;">
-        <h3>Courses</h3>
-        <div class="stat">Total Courses: 10</div>
-    </div>
+        <!-- Reports Section -->
+        <div id="reportsSection" class="dashboard-card" style="display: none;">
+            <h3>Reports</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Report ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Time and Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Reports will be dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <!-- Activities -->
-    <div id="activities" class="dashboard-card" style="display: none;">
-        <h3>Activities</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Quiz 1</td>
-                    <td>Introduction to Algebra</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- User Overview -->
+        <div id="userOverview" class="dashboard-card" style="display: none;">
+            <h3>User Overview</h3>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <h4>Total Students</h4>
+                    <p id="totalStudents">0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Instructors</h4>
+                    <p id="totalInstructors">0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Admins</h4>
+                    <p id="totalAdmins">0</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-    <script src="/JS/Admin.js"></script>
+    <script src="../JS/Admin.js"></script>
 </body>
 </html>
