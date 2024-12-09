@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - COMPLITE</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
-    <link href="/CSS/profile.css" rel="stylesheet">
+    <link href="../CSS/profile.css" rel="stylesheet">
 </head>
 <body>
     
@@ -20,11 +20,11 @@
                     <span class="logo-text">COMPLITE</span>
                 </a>
                 <nav class="navbar">
-                    <a href="/HTML/main.php" class="nav-link">Home</a>
-                    <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
-                    <a href="/HTML/Activity.html" class="nav-link">Activities</a>
-                    <a href="/HTML/About.html" class="nav-link">About</a>
-                    <a href="/HTML/profile.php" class="nav-link">Profile</a>
+                    <a href="../HTML/main.php" class="nav-link">Home</a>
+                    <a href="../HTML/Lessons.php" class="nav-link">Lessons</a>
+                    <a href="../HTML/Activity.html" class="nav-link">Activities</a>
+                    <a href="../HTML/about.html" class="nav-link">About</a>
+                    <a href="../HTML/profile.php" class="nav-link">Profile</a>
                     <a href="../Admin/process/logout.php" class="nav-link">Logout</a>
                 </nav>
             </div>

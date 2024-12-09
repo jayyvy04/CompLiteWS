@@ -28,16 +28,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complite - Activity</title>
-    <link rel="stylesheet" href="/CSS/inActivity.css">
+    <link rel="stylesheet" href="../CSS/inActivity.css">
 </head>
 <body>
   <header class="header-bottom">
     <div class="container">
         <a href="#" class="logo">COMPLITE</a>
         <nav class="navbar">
-            <a href="/HTML/main.html" class="nav-link">Home</a>
-            <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
-            <a href="/HTML/Activity.html" class="nav-link">Activities</a>
+            <a href="../HTML/main.html" class="nav-link">Home</a>
+            <a href="../HTML/Lessons.html" class="nav-link">Lessons</a>
+            <a href="../HTML/Activity.html" class="nav-link">Activities</a>
             <a href="#" class="nav-link">About</a>
             <a href="#" class="nav-link">Profile</a>
         </nav>

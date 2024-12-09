@@ -33,16 +33,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lessons - COMPLITE</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
-    <link href="/CSS/InLessons.css" rel="stylesheet">
+    <link href="../CSS/InLessons.css" rel="stylesheet">
 </head>
 <body>
     <header class="header-bottom">
         <div class="container">
             <a href="#" class="logo">COMPLITE</a>
             <nav class="navbar">
-                <a href="/HTML/main.html" class="nav-link">Home</a>
-                <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
-                <a href="/HTML/Activity.html" class="nav-link">Activities</a>
+                <a href="../HTML/main.html" class="nav-link">Home</a>
+                <a href="../HTML/Lessons.html" class="nav-link">Lessons</a>
+                <a href="../HTML/Activity.html" class="nav-link">Activities</a>
                 <a href="#" class="nav-link">About</a>
                 <a href="#" class="nav-link">Profile</a>
             </nav>
@@ -79,13 +79,13 @@
                             </ul>
                         </div>
                         <div class="lesson-image">
-                            <img src="<?php echo "/Resources/{$picture[8]}" ?>" alt="Input Devices">
+                            <img src="<?php echo "../Resources/{$picture[8]}" ?>" alt="Input Devices">
                         </div>
                     </div>
 
     
                 <div class="btn-wrapper">
-                    <button onclick="window.location.href='/HTML/inActivity.html'">Done</button>
+                    <button onclick="window.location.href='../HTML/inActivity.html'">Done</button>
                 </div>
             </div>
         </section>
@@ -95,7 +95,7 @@
         <p>&copy; 2024 COMPLITE. All rights reserved.</p>
     </footer>
     
-    <script src="lessons.js"></script>
+    <script src="../JS/lessons.js"></script>
 
 </html>
 

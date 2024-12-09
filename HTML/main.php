@@ -23,15 +23,15 @@
         <div class="header-bottom">
             <div class="container">
                 <a href="#" class="logo-container">
-                    <img src="/Resources/Logo.png" alt="COMPLITE Robot Mascot" class="logo-image">
+                    <img src="../Resources/Logo.png" alt="COMPLITE Robot Mascot" class="logo-image">
                     <span class="logo-text">COMPLITE</span>
                 </a>
                 <nav class="navbar">
-                    <a href="/HTML/main.php" class="nav-link">Home</a>
-                    <a href="/HTML/Lessons.php" class="nav-link">Lessons</a>
-                    <a href="/HTML/Activity.html" class="nav-link">Activities</a>
-                    <a href="/HTML/About.html" class="nav-link">About</a>
-                    <a href="/HTML/profile.php" class="nav-link">Profile</a>
+                    <a href="../HTML/main.php" class="nav-link">Home</a>
+                    <a href="../HTML/Lessons.php" class="nav-link">Lessons</a>
+                    <a href="../HTML/Activity.html" class="nav-link">Activities</a>
+                    <a href="../HTML/about.html" class="nav-link">About</a>
+                    <a href="../HTML/profile.php" class="nav-link">Profile</a>
                     <a href="../Admin/process/logout.php" class="nav-link">Logout</a>
                 </nav>
             </div>
@@ -43,7 +43,7 @@
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-mascot">
-                        <img src="/Resources/Robot.png" alt="COMPLITE Robot Mascot" class="robot-mascot">
+                        <img src="../Resources/Robot.png" alt="COMPLITE Robot Mascot" class="robot-mascot">
                     </div>
                     <div class="hero-text-content">
                         <h2 class="welcome-text">WELCOME TO</h2>
@@ -63,7 +63,7 @@
                         if ($all_courses->num_rows > 0){
                             while ($row = $all_courses->fetch_assoc()){
                     ?>
-                    <a href="/HTML/inLessons.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="lesson-card">
+                    <a href="../HTML/inLessons.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="lesson-card">
                         <div class="lesson-image"></div>
                         <h3 class="h3"><?php echo $row['courseName']; ?></h3>
                         <p><?php echo $row['courseDescription']; ?></p>
@@ -78,7 +78,7 @@
             <div class="container">
                 <h2 class="h2 section-title">Latest <span class="span">Activities</span></h2>
                 <div class="card-grid">
-                    <a href="/HTML/inActivity.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="activity-card">
+                    <a href="../HTML/inActivity.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="activity-card">
                         <div class="activity-image"></div>
                         <h3 class="h3"><?php echo $row['activityName']; ?></h3>
                         <p><?php echo $row['activityName']; ?></p>
@@ -104,8 +104,8 @@
                     <h3 class="h3">Navigation</h3>
                     <nav class="footer-nav">
                         <a href="#" class="footer-link">Home</a>
-                        <a href="/HTML/Lessons.html" class="footer-link">Lessons</a>
-                        <a href="/HTML/Activity.html" class="footer-link">Activities</a>
+                        <a href="../HTML/Lessons.html" class="footer-link">Lessons</a>
+                        <a href="../HTML/Activity.html" class="footer-link">Activities</a>
                         <a href="#" class="footer-link">About</a>
                         <a href="#" class="footer-link">Profile</a>
                     </nav>
