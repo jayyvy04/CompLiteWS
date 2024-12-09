@@ -12,6 +12,6 @@ Also import the data for our database, I added and edited the components within 
 3. Missing functions
 -> Reply "action" feature for admin and store to database
 -> Enroll Section feature for student that will store to enroll_section table
--> Activity Feature for student
--> Send report for instructor and student to be sent to admin and store to database
+-> Activity Feature for student 
+-> Send report for instructor and student to be sent to admin and store to database (DONE)
 

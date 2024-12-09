@@ -216,7 +216,52 @@ body {
         width: 200px;
     }
 }
+.join-class-modal .form-group {
+    margin-bottom: 1rem;
+}
 
+.join-class-modal label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-header);
+}
+
+.join-class-modal .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--text-light);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.join-class-modal .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.join-class-modal .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--mainbg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.join-class-modal .btn-primary:hover {
+    background-color: var(--nav-bg);
+    color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+    .join-class-modal .modal-content {
+        width: 90%;
+        margin: 25% auto;
+    }
+}
 /* Cards Grid */
 .card-grid {
     display: grid;
@@ -339,12 +384,13 @@ body {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
+    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -354,36 +400,19 @@ body {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
-    text-align: center;
-    border-radius: 10px;
 }
 
-.close-button {
+.close-btn {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-    cursor: pointer;
 }
 
-.close-button:hover {
+.close-btn:hover,
+.close-btn:focus {
     color: black;
-}
-
-#reportForm textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.submit-btn, .close-confirmation-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    text-decoration: none;
     cursor: pointer;
 }
+

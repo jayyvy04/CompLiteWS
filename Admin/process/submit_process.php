@@ -1,42 +1,26 @@
 <?php
-// File: C:\wamp64\www\CompLiteWS-1\process\submit_report.php
+session_start();
 require_once '../Admin/config/database.php';
 
-header('Content-Type: application/json');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $account_ID = $_POST['account_ID'];
+    $reportMessage = $_POST['reportMessage'];
 
     // Validate input
-    if (!isset($data['accountID']) || !isset($data['reportMessage'])) {
-        http_response_code(400);
-        echo json_encode(['status' => 'error', 'message' => 'Missing required fields']);
-        exit;
+    if (!empty($reportMessage)) {
+        $stmt = $conn->prepare("INSERT INTO reports (account_ID, reportMessage) VALUES (?, ?)");
+        $stmt->bind_param("is", $account_ID, $reportMessage);
+        
+        if ($stmt->execute()) {
+            // Redirect back with success message
+            $_SESSION['report_success'] = "Report submitted successfully!";
+            header("Location: ../HTML/main.php");
+            exit();
+        } else {
+            // Handle error
+            $_SESSION['report_error'] = "Failed to submit report. Please try again.";
+            header("Location: ../HTML/main.php");
+            exit();
+        }
     }
-
-    $accountID = $conn->real_escape_string($data['accountID']);
-    $reportMessage = $conn->real_escape_string($data['reportMessage']);
-
-    // Prepare and execute SQL
-    $sql = "INSERT INTO reports (account_ID, reportMessage) VALUES ('$accountID', '$reportMessage')";
-    
-    if ($conn->query($sql)) {
-        echo json_encode([
-            'status' => 'success', 
-            'message' => 'Report submitted successfully',
-            'reportID' => $conn->insert_id
-        ]);
-    } else {
-        http_response_code(500);
-        echo json_encode([
-            'status' => 'error', 
-            'message' => 'Failed to submit report: ' . $conn->error
-        ]);
-    }
-
-    $conn->close();
-} else {
-    http_response_code(405);
-    echo json_encode(['status' => 'error', 'message' => 'Method Not Allowed']);
 }
-?>

@@ -120,11 +120,12 @@
             </div>
         </form>
 
-        <!-- Reports Section -->
-        <div id="reportsSection" class="dashboard-card">
+ <!-- Reports Section -->
+<div id="reportsSection" class="dashboard-card">
     <h3>Reports</h3>
     <div class="table-container">
         <?php 
+        // Removed email from the query since it's not in your table
         $reportQuery = "SELECT r.*, a.username 
                         FROM reports r 
                         JOIN accounts a ON r.account_ID = a.accountID 
@@ -140,6 +141,7 @@
                     <th>From User</th>
                     <th>Description</th>
                     <th>Time and Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -149,6 +151,12 @@
                     <td><?php echo htmlspecialchars($report['username']); ?></td>
                     <td><?php echo htmlspecialchars($report['reportMessage']); ?></td>
                     <td><?php echo htmlspecialchars($report['dateTime']); ?></td>
+                    <td>
+                        <!-- Removed email parameter since it's not available -->
+                        <button class="reply-btn" onclick="openReplyModal(<?php echo $report['reportID']; ?>)">
+                            Reply
+                        </button>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -159,6 +167,27 @@
     </div>
 </div>
 
+<!-- Reply Modal -->
+<div id="replyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeReplyModal()">&times;</span>
+        <h4>Reply to Report</h4>
+        <form id="replyForm">
+            <input type="hidden" id="reportID" name="reportID">
+            <textarea id="replyMessage" name="replyMessage" rows="5" placeholder="Enter your reply..." required></textarea>
+            <button type="submit" class="submit-btn">Send Reply</button>
+        </form>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeSuccessModal()">&times;</span>
+        <h4>Reply sent successfully!</h4>
+        <p>Your message has been saved.</p>
+    </div>
+</div>
         <!-- User Overview -->
         <div id="userOverview" class="dashboard-card" style="display: none;">
             <h3>User Overview</h3>
@@ -178,7 +207,9 @@
             </div>
         </div>
     </div>
+    
     <script src="../JS/Logout.js"></script>
     <script src="../JS/Admin.js"></script>
+    <script src="../JS/handler.js"></script>
 </body>
 </html>

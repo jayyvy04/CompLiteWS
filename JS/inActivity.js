@@ -129,7 +129,7 @@ nextBtn.addEventListener('click', () => {
         //alert(`Activity Complete! Your score: ${score}/${activities.length}\nTime Taken: ${timeTaken} seconds`);
         
         // Optionally, redirect to a ranking or results page (uncomment the line below for redirection)
-        window.location.href = '/HTML/Lessons.html';
+        window.location.href = './HTML/Lessons.html';
     }
 });
 
