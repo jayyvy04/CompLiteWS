@@ -1,4 +1,62 @@
-<!-- Output Devices Section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons - COMPLITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+    <link href="/CSS/InLessons.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header-bottom">
+        <div class="container">
+            <a href="#" class="logo">COMPLITE</a>
+            <nav class="navbar">
+                <a href="/HTML/main.html" class="nav-link">Home</a>
+                <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
+                <a href="/HTML/Activity.html" class="nav-link">Activities</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Profile</a>
+            </nav>
+        </div>
+    </header>
+
+    <body>
+        <section class="lesson">
+            <h1>Lesson 1: The Parts of a Computer</h1>
+            <div class="content">
+                <p class="p1">
+                    <strong>Objective:</strong><br>
+                    By the end of this lesson, students will be able to identify the basic parts of a computer, understand their functions, and differentiate between hardware and software.
+                </p>
+    
+                <h3>What Makes Up a Computer?</h3>
+                <p>
+                    A computer consists of two main components: hardware and software. Hardware refers to the physical parts of a computer that you can see and touch, while software includes the programs and applications that make the hardware useful. In this lesson, we will focus on the hardware components of a computer.
+                </p>
+    
+                <div class="content1">
+                    <h3>Key Hardware Components and Their Functions</h3>
+    
+                    <!-- Input Devices Section -->
+                    <div class="row">
+                        <div class="lesson-text">
+                            <h4><strong>Input Devices:</strong></h4>
+                            <p>
+                                Input devices enable you to interact with the computer by sending information or commands to it. These devices allow you to provide instructions, type data, or make selections, helping the computer understand what you want it to do.
+                            </p>
+                            <ul>
+                                <li>Keyboard: Used to type letters, numbers, and commands.</li>
+                                <li>Mouse: Used to move the cursor and click on items on the screen.</li>
+                                <li>Touchpad (on laptops): A flat surface that acts as a mouse replacement.</li>
+                            </ul>
+                        </div>
+                        <div class="lesson-image">
+                            <img src="/Resources/InputDevices.png" alt="Input Devices">
+                        </div>
+                    </div>
+    
+                    <!-- Output Devices Section -->
                     <div class="row reverse">
                         <div class="lesson-text">
                             <h4><strong>Output Devices:</strong></h4>
@@ -69,3 +127,18 @@
                 <p class="p4">
                     <br>By understanding the parts of a computer and their functions, you can better appreciate how these components work together to help you perform tasks efficiently. Computers are not just tools—they are systems of interconnected parts that rely on both hardware and software to operate.
                 </p>
+    
+                <div class="btn-wrapper">
+                    <button onclick="window.location.href='/HTML/inActivity.html'">Done</button>
+                </div>
+            </div>
+        </section>
+    </body>
+    
+    <footer>
+        <p>&copy; 2024 COMPLITE. All rights reserved.</p>
+    </footer>
+    
+    <script src="lessons.js"></script>
+
+</html>
