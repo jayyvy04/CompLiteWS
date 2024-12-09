@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!--Profile Page-->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +19,8 @@
             <div class="logo">COMPLITE</div>
             <nav class="navbar">
                 <a href="../HTML/instructor-main.html" class="nav-link">Dashboard</a>
-                <a href="../HTML/instructor-section.html" class="nav-link">Section</a>
-                <a href="../HTML/instructor-profile.html" class="nav-link">Profile</a>
+                <a href="../HTML/instructor-section.php" class="nav-link">Section</a>
+                <a href="../HTML/instructor-profile.php" class="nav-link">Profile</a>
                 <a href="#" id="logoutBtn" class="nav-link logout-link" onclick="logout()">Logout</a>
             </nav>
         </div>
@@ -30,27 +33,27 @@
             <input type="file" id="upload-picture" accept="image/*">
         </div>
         <div class="profile-details">
-            <h1>User Profile</h1>
+            <h1><?php echo $_SESSION['firstname'].' '. $_SESSION['lastname']; ?></h1>
             <div class="detail-grid">
                 <div class="profile-detail">
                     <span class="detail-label">Username</span>
-                    <span class="detail-value" id="username">complite_user</span>
+                    <span class="detail-value" id="username"><?php echo $_SESSION['username']; ?></span>
                 </div>
                 <div class="profile-detail">
                     <span class="detail-label">Full Name</span>
-                    <span class="detail-value" id="full-name">John Doe</span>
+                    <span class="detail-value" id="full-name"><?php echo $_SESSION['firstname'].' '. $_SESSION['lastname']; ?></span>
                 </div>
                 <div class="profile-detail">
                     <span class="detail-label">Email</span>
-                    <span class="detail-value" id="email">john.doe@complite.com</span>
+                    <span class="detail-value" id="email"><?php echo $_SESSION['e'] ?></span>
                 </div>
                 <div class="profile-detail">
                     <span class="detail-label">Sex</span>
-                    <span class="detail-value" id="sex">Male</span>
+                    <span class="detail-value" id="sex"><?php echo $_SESSION['s']; ?></span>
                 </div>
                 <div class="profile-detail">
                     <span class="detail-label">Birth Date</span>
-                    <span class="detail-value" id="birth-date">January 15, 1990</span>
+                    <span class="detail-value" id="birth-date"><?php echo $_SESSION['b']; ?></span>
                 </div>
             </div>
             <button class="edit-button" id="editProfileBtn">Edit Profile</button>

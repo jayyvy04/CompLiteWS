@@ -1,3 +1,23 @@
+<?php
+    session_start();
+    require_once '../Admin/config/database.php';
+
+    if (isset($_SESSION['student_id'])){
+        $stmt = $conn->prepare("SELECT section.sectionID, section.courseName, section.courseDescription FROM enroll_section INNER JOIN section ON enroll_section.section_ID = section.sectionID WHERE student_ID = ?");
+        $stmt->bind_param("i", $_SESSION['student_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo 'This';
+    } else {
+        echo 'That';
+    }   
+    $stmt = $conn->prepare("SELECT section.sectionID, section.courseName, section.courseDescription FROM enroll_section INNER JOIN section ON enroll_section.section_ID = section.sectionID WHERE student_ID = ?");
+    $stmt->bind_param("i", $_SESSION['student_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    echo $_SESSION['student_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +36,12 @@
                     <span class="logo-text">COMPLITE</span>
                 </a>
                 <nav class="navbar">
-                    <a href="/HTML/main.html" class="nav-link">Home</a>
-                    <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
+                    <a href="/HTML/main.php" class="nav-link">Home</a>
+                    <a href="/HTML/Lessons.php" class="nav-link">Lessons</a>
                     <a href="/HTML/Activity.html" class="nav-link">Activities</a>
                     <a href="/HTML/About.html" class="nav-link">About</a>
-                    <a href="/HTML/profile.html" class="nav-link">Profile</a>
-                    <a href="/HTML/login.html" class="nav-link">Logout</a>
+                    <a href="/HTML/profile.php" class="nav-link">Profile</a>
+                    <a href="../Admin/process/logout.php" class="nav-link">Logout</a>
                 </nav>
             </div>
         </div>
@@ -35,49 +55,24 @@
             </div>
         </header>
 
+        <?php
+            if ($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()){
+        ?>
+
         <div class="card-grid">
-            <a href="/HTML/inLessons.html" class="lesson-card">
+            <a href="/HTML/inLessons.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="lesson-card">
                 <img src="/Resources/lesson1.jpg" alt="Lesson 1">
                 <div class="lesson-card-content">
-                    <h3>The Parts of the Computer</h3>
-                    <p>Learn the different parts of the Computer</p>
+                    <h3><?php echo $row['courseName']; ?></h3>
+                    <p><?php echo $row['courseDescription'];?></p>
                 </div>
             </a>
-            <a href="/lesson/2" class="lesson-card">
-                <img src="/Resources/lesson1.jpg" alt="Lesson 2">
-                <div class="lesson-card-content">
-                    <h3>Web Development Basics</h3>
-                    <p>Understand HTML, CSS, and JavaScript</p>
-                </div>
-            </a>
-            <a href="/lesson/3" class="lesson-card">
-                <img src="/Resources/lesson1.jpg" alt="Lesson 3">
-                <div class="lesson-card-content">
-                    <h3>Data Structures</h3>
-                    <p>Explore essential data organization techniques</p>
-                </div>
-            </a>
-            <a href="/lesson/4" class="lesson-card">
-                <img src="/Resources/lesson1.jpg" alt="Lesson 4">
-                <div class="lesson-card-content">
-                    <h3>Python Programming</h3>
-                    <p>Master the Python programming language</p>
-                </div>
-            </a>
-            <a href="/lesson/5" class="lesson-card">
-                <img src="/Resources/lesson1.jpg" alt="Lesson 5">
-                <div class="lesson-card-content">
-                    <h3>Algorithm Design</h3>
-                    <p>Learn problem-solving through algorithms</p>
-                </div>
-            </a>
-            <a href="/lesson/6" class="lesson-card">
-                <img src="/Resources/lesson1.jpg" alt="Lesson 6">
-                <div class="lesson-card-content">
-                    <h3>Advanced Web Frameworks</h3>
-                    <p>Dive into modern web development frameworks</p>
-                </div>
-            </a>
+        
+        <?php
+                }
+            }
+        ?>
         </div>
     </div>
 

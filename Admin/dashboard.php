@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 // Route to appropriate dashboard based on account type
 switch ($_SESSION['account_type']) {
     case 'Admin':
-        header("Location: ../HTML/Admin_Dashboard.html");
+        header("Location: ../HTML/Admin_Dashboard.php");
         break;
     case 'Instructor':
         // Create instructor dashboard when ready
@@ -18,7 +18,7 @@ switch ($_SESSION['account_type']) {
         break;
     case 'Student':
         // Create student dashboard when ready
-        header("Location: ../HTML/main.html");
+        header("Location: ../HTML/main.php");
         break;
     default:
         session_destroy();

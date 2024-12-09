@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    require_once '../Admin/config/database.php';
+
+    $stmt = $conn->prepare("SELECT * FROM section
+            WHERE instructor_ID = ?");
+    $stmt->bind_param("i", $_SESSION['instructor_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+?>
 <!--Section-->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +24,8 @@
             <a href="#" class="logo">COMPLITE</a>
             <nav class="navbar">
                 <a href="../HTML/instructor-main.html" class="nav-link">Dashboard</a>
-                <a href="../HTML/instructor-section.html" class="nav-link">Sections</a>
-                <a href="../HTML/instructor-profile.html" class="nav-link">Profile</a>
+                <a href="../HTML/instructor-section.php" class="nav-link">Sections</a>
+                <a href="../HTML/instructor-profile.php" class="nav-link">Profile</a>
                 <a href="#" id="logoutBtn" class="nav-link logout-link" onclick="logout()">Logout</a>
             </nav>
         </div>
@@ -39,6 +49,23 @@
             </thead>
             <tbody id="sectionsTableBody">
                 <!-- Sections will be dynamically added here -->
+                 <?php
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()){
+                        
+                ?>
+                <td>
+                    <tr><?php echo $row['sectionName'];?></tr>
+                    <tr><?php echo $row['sectionCode'];?></tr>
+                    <tr><?php echo $row['courseName'];?></tr>
+                    <tr><?php echo $row['dateTime'];?></tr>
+                    <tr><?php echo $row['sectionName'];?></tr>
+                </td>
+
+                <?php
+                        }
+                    }
+                ?>
             </tbody>
         </table>
     </div>
