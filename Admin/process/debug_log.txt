@@ -1,0 +1,21 @@
+Session AccountID: Array
+(
+    [user_id] => 8
+    [username] => qwe
+    [account_type] => Student
+    [student_id] => 3
+    [firstname] => qwe
+    [lastname] => qwe
+    [middlename] => qe
+    [s] => Male
+    [b] => 2024-12-07
+    [e] => qwe@gmail.com
+    [p] => 0
+)
+
+POST Data: Array
+(
+    [reportMessage] => qwe
+)
+
+Config Path: C:/wamp64/www/CompLiteWS/Admin/config/database.php

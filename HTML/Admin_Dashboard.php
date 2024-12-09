@@ -121,38 +121,43 @@
         </form>
 
         <!-- Reports Section -->
-        <div id="reportsSection" class="dashboard-card" style="display: none;">
-            <h3>Reports</h3>
-            <div class="table-container">
-                <?php 
-                    if ($r4->num_rows > 0){
-                        while($rows4 = $r4->fetch_assoc()) {
-                ?>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Report ID</th>
-                            <th>From Account ID</th>
-                            <th>Description</th>
-                            <th>Time and Date</th>
-                        </tr>
-                        <tr>
-                            <td><?php echo $rows4['reportID']; ?></td>
-                            <td><?php echo $rows4['account_ID']; ?></td>
-                            <td><?php echo $rows4['reportMessage']; ?></td>
-                            <td><?php echo $rows4['dateTime']; ?></td>
-                        <tr>
-                <?php
-                        }
-                    }
-                ?>
-                    </thead>
-                    <tbody>
-                        <!-- Reports will be dynamically populated -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <div id="reportsSection" class="dashboard-card">
+    <h3>Reports</h3>
+    <div class="table-container">
+        <?php 
+        $reportQuery = "SELECT r.*, a.username 
+                        FROM reports r 
+                        JOIN accounts a ON r.account_ID = a.accountID 
+                        ORDER BY r.dateTime DESC";
+        $reportResult = $conn->query($reportQuery);
+        
+        if ($reportResult->num_rows > 0) {
+        ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>From User</th>
+                    <th>Description</th>
+                    <th>Time and Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while($report = $reportResult->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($report['reportID']); ?></td>
+                    <td><?php echo htmlspecialchars($report['username']); ?></td>
+                    <td><?php echo htmlspecialchars($report['reportMessage']); ?></td>
+                    <td><?php echo htmlspecialchars($report['dateTime']); ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <?php } else { ?>
+            <p>No reports available.</p>
+        <?php } ?>
+    </div>
+</div>
 
         <!-- User Overview -->
         <div id="userOverview" class="dashboard-card" style="display: none;">

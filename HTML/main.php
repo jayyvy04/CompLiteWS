@@ -2,11 +2,18 @@
     session_start();
     require_once '../Admin/config/database.php';
 
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: ../Admin/login.php'); // Redirect to the login page
+        exit();
+    }
 
     $stmt = "SELECT * from section";
     $all_courses= $conn->query($stmt);
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,23 +133,34 @@
             </div>
         </div>
     </footer>
-    <div id="reportModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Submit a Report</h2>
-            <form id="reportForm">
-                <div class="form-group">
-                    <label for="reportMessage">Report Details</label>
-                    <textarea id="reportMessage" name="reportMessage" rows="4" placeholder="Describe your report..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Report</button>
-            </form>
-        </div>
-    </div
+    <!-- Report Modal (existing code) -->
+<div id="reportModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Submit a Report</h2>
+        <form id="reportForm" method="POST">
+            <div class="form-group">
+                <label for="reportMessage">Report Details</label>
+                <textarea id="reportMessage" name="reportMessage" rows="4" placeholder="Describe your report..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Report</button>
+        </form>
+    </div>
+</div>
 
+<!-- Confirmation Modal (existing code) -->
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Report Submitted</h2>
+        <p>Your report has been successfully sent.</p>
+        <button class="close-confirmation-btn">Close</button>
+    </div>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js" nomodule></script>
     <script src="../JS/main.js"></script>
     <script src="../JS/report-modal.js"></script>
+
 </body>
 </html>

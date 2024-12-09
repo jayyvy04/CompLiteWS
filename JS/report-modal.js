@@ -1,30 +1,62 @@
-function fetchReports() {
-    fetch('../process/fetch_reports.php')
-    .then(response => response.json())
-    .then(reports => {
-        const tableBody = document.querySelector('#reportsSection tbody');
-        tableBody.innerHTML = ''; // Clear existing rows
+document.addEventListener('DOMContentLoaded', function() {
+    const reportLink = document.querySelector('a[href="#reportModal"]');
+    const reportModal = document.getElementById('reportModal');
+    const confirmationModal = document.getElementById('confirmationModal');
+    const closeButtons = document.querySelectorAll('.close-button');
+    const reportForm = document.getElementById('reportForm');
 
-        if (reports.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="4">No reports found</td></tr>';
-            return;
+    // Open report modal
+    reportLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        reportModal.style.display = 'block';
+    });
+
+    // Close modal buttons
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            reportModal.style.display = 'none';
+            confirmationModal.style.display = 'none';
+        });
+    });
+
+    // Form submission
+    reportForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Create FormData object
+        const formData = new FormData(this);
+
+        // Debug: Log FormData contents
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
         }
 
-        reports.forEach(report => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${report.reportID}</td>
-                <td>${report.title || 'Untitled Report'}</td>
-                <td>${report.reportMessage}</td>
-                <td>${report.dateTime}</td>
-            `;
-            tableBody.appendChild(row);
+        // Send AJAX request
+        fetch('../Admin/process/submit_report.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Received data:', data);
+            if(data.success) {
+                reportModal.style.display = 'none';
+                confirmationModal.style.display = 'block';
+            } else {
+                alert('Error submitting report: ' + (data.message || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Full error:', error);
+            alert('An error occurred: ' + error.message);
         });
-    })
-    .catch(error => {
-        console.error('Error fetching reports:', error);
     });
-}
 
-// Fetch reports when Reports section is shown
-document.querySelector('button[onclick="showSection(\'reportsSection\')"]').addEventListener('click', fetchReports);
+    // Close confirmation modal
+    document.querySelector('.close-confirmation-btn').addEventListener('click', function() {
+        confirmationModal.style.display = 'none';
+    });
+});
