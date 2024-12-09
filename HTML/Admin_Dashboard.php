@@ -5,7 +5,7 @@
     $totalStudent = 0;
     $totalInstructor = 0;
     $totalAdmin = 0;
-
+    
     $stmt = "SELECT COUNT(accountID) AS totalStudent from accounts WHERE accountType = 'Student'";
     $r1 = $conn->query($stmt);
 
