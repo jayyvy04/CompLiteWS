@@ -18,5 +18,8 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Send a success response
+echo "<script>alert('User Logout');</script>";
 http_response_code(200);
+header("Location: /");
 exit();
+?>

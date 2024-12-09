@@ -11,7 +11,7 @@ const activities = [
         image: 'https://via.placeholder.com/500x300?text=Activity+2',
         buttons: ['Venus', 'Mars', 'Jupiter', 'Saturn'],
         correctAnswer: 1
-    },
+    },  
     {
         question: "What is the largest mammal in the world?",
         image: 'https://via.placeholder.com/500x300?text=Activity+3',

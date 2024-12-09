@@ -1,3 +1,44 @@
+<?php
+    session_start();
+    require_once '../Admin/config/database.php';
+
+    $totalStudent = 0;
+    $totalInstructor = 0;
+    $totalAdmin = 0;
+
+    $stmt = "SELECT COUNT(accountID) AS totalStudent from accounts WHERE accountType = 'Student'";
+    $r1 = $conn->query($stmt);
+
+    if ($r1->num_rows > 0) {
+        // Output data of each row
+        while($row1 = $r1->fetch_assoc()) {
+            $totalStudent = $row1["totalStudent"];
+        }
+    } 
+
+    $stmt2 = "SELECT COUNT(accountID) AS totalInstructor from accounts WHERE accountType = 'Instructor'";
+    $r2 = $conn->query($stmt2);
+
+    if ($r2->num_rows > 0) {
+        // Output data of each row
+        while($row2 = $r2->fetch_assoc()) {
+            $totalInstructor = $row2["totalInstructor"];
+        }
+    } 
+
+    $stmt3 = "SELECT COUNT(accountID) AS totalAdmin from accounts WHERE accountType = 'Admin'";
+    $r3 = $conn->query($stmt3);
+
+    if ($r3->num_rows > 0) {
+        // Output data of each row
+        while($row3 = $r3->fetch_assoc()) {
+            $totalAdmin = $row3["totalAdmin"];
+        }
+    } 
+
+    $stmt4 = "SELECT * FROM reports";
+    $r4 = $conn->query($stmt4);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,14 +124,28 @@
         <div id="reportsSection" class="dashboard-card" style="display: none;">
             <h3>Reports</h3>
             <div class="table-container">
+                <?php 
+                    if ($r4->num_rows > 0){
+                        while($rows4 = $r4->fetch_assoc()) {
+                ?>
                 <table>
                     <thead>
                         <tr>
                             <th>Report ID</th>
-                            <th>Title</th>
+                            <th>From Account ID</th>
                             <th>Description</th>
                             <th>Time and Date</th>
                         </tr>
+                        <tr>
+                            <td><?php echo $rows4['reportID']; ?></td>
+                            <td><?php echo $rows4['account_ID']; ?></td>
+                            <td><?php echo $rows4['reportMessage']; ?></td>
+                            <td><?php echo $rows4['dateTime']; ?></td>
+                        <tr>
+                <?php
+                        }
+                    }
+                ?>
                     </thead>
                     <tbody>
                         <!-- Reports will be dynamically populated -->
@@ -105,15 +160,15 @@
             <div class="stat-grid">
                 <div class="stat-card">
                     <h4>Total Students</h4>
-                    <p id="totalStudents">0</p>
+                    <p id="totalStudents"><?php echo $totalStudent;?></p>
                 </div>
                 <div class="stat-card">
                     <h4>Total Instructors</h4>
-                    <p id="totalInstructors">0</p>
+                    <p id="totalInstructors"><?php echo $totalInstructor;?></p>
                 </div>
                 <div class="stat-card">
                     <h4>Total Admins</h4>
-                    <p id="totalAdmins">0</p>
+                    <p id="totalAdmins"><?php echo $totalAdmin;?></p>
                 </div>
             </div>
         </div>

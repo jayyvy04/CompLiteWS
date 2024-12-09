@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    require_once '../Admin/config/database.php';
+
+
+    $stmt = "SELECT * from section";
+    $all_courses= $conn->query($stmt);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +27,12 @@
                     <span class="logo-text">COMPLITE</span>
                 </a>
                 <nav class="navbar">
-                    <a href="/HTML/main.html" class="nav-link">Home</a>
-                    <a href="/HTML/Lessons.html" class="nav-link">Lessons</a>
+                    <a href="/HTML/main.php" class="nav-link">Home</a>
+                    <a href="/HTML/Lessons.php" class="nav-link">Lessons</a>
                     <a href="/HTML/Activity.html" class="nav-link">Activities</a>
                     <a href="/HTML/About.html" class="nav-link">About</a>
-                    <a href="/HTML/profile.html" class="nav-link">Profile</a>
-                    <a href="/HTML/login.html" class="nav-link">Logout</a>
+                    <a href="/HTML/profile.php" class="nav-link">Profile</a>
+                    <a href="../Admin/process/logout.php" class="nav-link">Logout</a>
                 </nav>
             </div>
         </div>
@@ -50,33 +59,17 @@
             <div class="container">
                 <h2 class="h2 section-title">Latest <span class="span">Lessons</span></h2>
                 <div class="card-grid">
-                    <a href="/HTML/inLessons.html" class="lesson-card">
+                    <?php 
+                        if ($all_courses->num_rows > 0){
+                            while ($row = $all_courses->fetch_assoc()){
+                    ?>
+                    <a href="/HTML/inLessons.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="lesson-card">
                         <div class="lesson-image"></div>
-                        <h3 class="h3">Lesson 1</h3>
-                        <p>Introduction to Programming</p>
-                        <div class="progress">Progress: 0%</div>
+                        <h3 class="h3"><?php echo $row['courseName']; ?></h3>
+                        <p><?php echo $row['courseDescription']; ?></p>
+                        <div class="progress">Progress: 0%</div>  
                     </a>
 
-                    <a href="/HTML/lesson2.html" class="lesson-card">
-                        <div class="lesson-image"></div>
-                        <h3 class="h3">Lesson 2</h3>
-                        <p>Basic Algorithms</p>
-                        <div class="progress">Progress: 0%</div>
-                    </a>
-
-                    <a href="/HTML/lesson3.html" class="lesson-card">
-                        <div class="lesson-image"></div>
-                        <h3 class="h3">Lesson 3</h3>
-                        <p>Data Structures</p>
-                        <div class="progress">Progress: 0%</div>
-                    </a>
-
-                    <a href="/HTML/lesson4.html" class="lesson-card">
-                        <div class="lesson-image"></div>
-                        <h3 class="h3">Lesson 4</h3>
-                        <p>Advanced Concepts</p>
-                        <div class="progress">Progress: 0%</div>
-                    </a>
                 </div>
             </div>
         </section>
@@ -85,29 +78,15 @@
             <div class="container">
                 <h2 class="h2 section-title">Latest <span class="span">Activities</span></h2>
                 <div class="card-grid">
-                    <a href="/HTML/activity1.html" class="activity-card">
+                    <a href="/HTML/inActivity.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="activity-card">
                         <div class="activity-image"></div>
-                        <h3 class="h3">Activity 1</h3>
-                        <p>Coding Challenge</p>
+                        <h3 class="h3"><?php echo $row['activityName']; ?></h3>
+                        <p><?php echo $row['activityName']; ?></p>
                     </a>
-
-                    <a href="/HTML/activity2.html" class="activity-card">
-                        <div class="activity-image"></div>
-                        <h3 class="h3">Activity 2</h3>
-                        <p>Problem Solving</p>
-                    </a>
-
-                    <a href="/HTML/activity3.html" class="activity-card">
-                        <div class="activity-image"></div>
-                        <h3 class="h3">Activity 3</h3>
-                        <p>Quiz Time</p>
-                    </a>
-
-                    <a href="/HTML/activity4.html" class="activity-card">
-                        <div class="activity-image"></div>
-                        <h3 class="h3">Activity 4</h3>
-                        <p>Group Project</p>
-                    </a>
+                    <?php
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </section>
