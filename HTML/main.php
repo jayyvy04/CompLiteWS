@@ -1,3 +1,19 @@
+<?php
+    session_start();
+    require_once '../Admin/config/database.php';
+
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: ../Admin/login.php'); // Redirect to the login page
+        exit();
+    }
+
+    $stmt = "SELECT * from section";
+    $all_courses= $conn->query($stmt);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,6 +98,7 @@
             </div>
         </section>
     </main>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -94,10 +111,10 @@
                     <h3 class="h3">Navigation</h3>
                     <nav class="footer-nav">
                         <a href="#" class="footer-link">Home</a>
-                        <a href="../HTML/Lessons.html" class="footer-link">Lessons</a>
+                        <a href="../HTML/Lessons.php" class="footer-link">Lessons</a>
                         <a href="../HTML/Activity.html" class="footer-link">Activities</a>
-                        <a href="#" class="footer-link">About</a>
-                        <a href="#" class="footer-link">Profile</a>
+                        <a href="/HTML/About.html" class="footer-link">About</a>
+                        <a href="/HTML/profile.php" class="footer-link">Profile</a>
                     </nav>
                 </div>
                 
@@ -116,7 +133,6 @@
             </div>
         </div>
     </footer>
-
     <!-- Report Modal (existing code) -->
 <div id="reportModal" class="modal">
     <div class="modal-content">
@@ -132,35 +148,19 @@
     </div>
 </div>
 
-<!-- Admin Reply Modal -->
-<div id="replyModal" class="modal">
+<!-- Confirmation Modal (existing code) -->
+<div id="confirmationModal" class="modal">
     <div class="modal-content">
-        <span class="modal-close" onclick="sectionManager.hideModal('replyModal')">×</span>
-        <h2>Reply to Report</h2>
-        <form id="replyForm" method="POST">
-            <div class="form-group">
-                <label for="replyMessage">Reply Message</label>
-                <textarea id="replyMessage" name="replyMessage" rows="4" placeholder="Write your reply here..." required></textarea>
-            </div>
-            <input type="hidden" name="userEmail" value="user@example.com"> <!-- Add the actual user's email here -->
-            <button type="submit" class="submit-btn">Send Reply</button>
-        </form>
+        <span class="close-button">&times;</span>
+        <h2>Report Submitted</h2>
+        <p>Your report has been successfully sent.</p>
+        <button class="close-confirmation-btn">Close</button>
     </div>
 </div>
-
-<!-- Confirmation Modal (Reply sent) -->
-<div id="replyConfirmationModal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <h2>Reply Sent</h2>
-        <p>Your reply has been successfully sent to the user.</p>
-        <button class="close-confirmation-btn" onclick="sectionManager.hideModal('replyConfirmationModal')">Close</button>
-    </div>
-</div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.esm.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/ionicons/ionicons.js" nomodule></script>
     <script src="../JS/main.js"></script>
+    <script src="../JS/report-modal.js"></script>
 
 </body>
 </html>
