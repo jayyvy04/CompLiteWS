@@ -1,13 +1,10 @@
 :root {
-    --primary-color: #ffe600;
-    --mainbg: #0c1686;
-    --nav-bg: #0D4DD6;
-    --text-white: #ffffff;
-    --text-header:#0D4DD6;
-    --text-dark: #001d5c;
-    --text-light: #d1d1d1;
-    --card-bg: #ffe600;
-    --card-hover: #001d5c;
+    --WhiteSmoke: #F5F4F6;
+    --SpaceCadet: #232946;
+    --Gold: #FCD200;
+    --Mint: #3EB183;
+    --ChiliRed: #E93023;
+    --White:  #FFFFFF;
 }
 
 * {
@@ -18,8 +15,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-white);
+    background-color: var(--WhiteSmoke);
+    color: var(--White);
     line-height: 1.5;
 }
 
@@ -29,7 +26,7 @@ body {
 }
 
 .nav-link {
-    color: var(--text-white);
+    color: var(--White);
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -45,7 +42,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--Gold);
     transition: width 0.3s ease;
 }
 
@@ -54,7 +51,7 @@ body {
 }
 /* Header Styles */
 .header-bottom {
-    background-color: var(--nav-bg);
+    background-color: var(--SpaceCadet);
     padding: 20px 0;
     position: fixed;
     top: 0;
@@ -84,7 +81,7 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--text-white);
+    color: var(--White);
 }
 
 .logo-image {
@@ -101,29 +98,40 @@ body {
 }
 
 .logo-text:hover {
-    color: var(--primary-color);
+    color: var(--Gold);
 }
 
 
 .hero {
-    background: linear-gradient(to right, #0c1686, #0339ad);
-    background-size: 400% 400%; /* Make the gradient larger so it can move */
-    min-height: 100vh;
+    position: relative; /* Allows pseudo-elements to be positioned relative to this container */
+    background: url('/Resources/lesson1.gif') no-repeat center center/cover; /* Adds the GIF background */
+    min-height: 100vh; /* Ensures the section fills the viewport height */
     display: flex;
     align-items: center;
-    animation: gradientMove 5s ease infinite;
+    justify-content: center; /* Centers content horizontally and vertically */
+    overflow: hidden; /* Prevents overflow if the content extends beyond the section */
+    z-index: 0; /* Base layer for the section */
 }
 
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+/* Add the gradient overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(128, 109, 0, 0), rgba(9, 0, 41, 0.534));
+    z-index: 1; /* Ensures the gradient is above the background but below content */
+    pointer-events: none; /* Ensures the gradient doesn't block interactions */
+}
+
+/* Style content inside the .hero */
+.hero .content {
+    position: relative; /* Keeps the content above the gradient */
+    z-index: 2; /* Ensures content appears above the gradient */
+    color: var(--White); /* Ensures text is visible over the background */
+    text-align: center;
 }
 
 .hero-content {
@@ -131,6 +139,8 @@ body {
     align-items: center;
     gap: 4rem;
     padding: 2rem 0;
+    position: relative; /* Ensures this layer stays above the gradient */
+    z-index: 2;
 }
 
 .hero-mascot {
@@ -149,21 +159,21 @@ body {
 
 .welcome-text {
     font-size: 3.5rem;
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     margin-bottom: -20px;
     font-weight: 700;
 }
 
 .brand-name {
     font-size: 5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    color: var(--Gold);
     font-weight: 800;
 }
 
 .hero-description {
+    background-color: var(--Gold);
     font-size: 1.5rem;
-    color: var(--text-white);
+    color: var(--SpaceCadet);
     margin-bottom: 2rem;
 }
 
@@ -171,8 +181,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--primary-color);
-    color: var(--mainbg);
+    background-color: var(--Gold);
+    color: var(--SpaceCadet);
     padding: 1rem 2rem;
     border-radius: 30px;
     text-decoration: none;
@@ -217,6 +227,7 @@ body {
     }
 }
 
+
 /* Cards Grid */
 .card-grid {
     display: grid;
@@ -226,15 +237,15 @@ body {
 }
 .h2.section-title{
     margin-top: 40px;
-    color: var(--text-header);
+    color: var(--SpaceCadet);
 }
 
 .lesson-card, .activity-card {
-    background-color: var(--card-bg);
+    background-color: var(--Gold);
     padding: 1.5rem;
     border-radius: 8px;
     text-decoration: none;
-    color: var(--text-header);
+    color: var(--SpaceCadet);
     transition: all 0.3s ease-in-out;
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -242,14 +253,14 @@ body {
 
 .lesson-card:hover, .activity-card:hover {
     transform: translateY(-5px);
-    background-color: var(--card-hover);
-    color: #FFFFFF;
+    background-color: var(--Mint);
+    color: var(--WhiteSmoke);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Footer */
 .footer {
-    background-color: var(--nav-bg);
+    background-color: var(--SpaceCadet);
     color: var(--text-white);
     padding: 60px 0 20px;
     margin-top: 4rem;
@@ -273,13 +284,13 @@ body {
 }
 
 .footer-link {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    color: var(--card-bg);
+    color: var(--Gold);
 }
 
 /* Animations */
@@ -349,6 +360,7 @@ body {
 }
 
 .modal-content {
+    color: black;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;

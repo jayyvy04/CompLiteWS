@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-mascot">
-                        <img src="../Resources/Robot.png" alt="COMPLITE Robot Mascot" class="robot-mascot">
+                        <img src="../Resources/Hiro.png" alt="COMPLITE Robot Mascot" class="robot-mascot">
                     </div>
                     <div class="hero-text-content">
                         <h2 class="welcome-text">WELCOME TO</h2>
