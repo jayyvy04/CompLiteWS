@@ -73,8 +73,7 @@
                     <a href="../HTML/inLessons.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="lesson-card">
                         <div class="lesson-image"></div>
                         <h3 class="h3"><?php echo $row['courseName']; ?></h3>
-                        <p><?php echo $row['courseDescription']; ?></p>
-                        <div class="progress">Progress: 0%</div>  
+                        <p><?php echo $row['courseDescription']; ?></p> 
                     </a>
 
                 </div>

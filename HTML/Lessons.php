@@ -26,6 +26,7 @@
     <title>Lessons - COMPLITE</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Oxanium:wght@800&display=swap" rel="stylesheet">
     <link href="../CSS/Lessons.css" rel="stylesheet">
+    <link href="../CSS/LessonsModal.css" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -47,20 +48,47 @@
         </div>
     </header>
 
-    <div class="main-content">
+    <main class="main-content">
+    <div class="container">
         <header class="page-header">
             <div class="content-header">
                 <h1>Lessons</h1>
                 <p>Explore our interactive learning materials</p>
+                <button id="addSectionBtn">+ Add Section</button>
             </div>
         </header>
 
+        <!-- Add Section Modal -->
+        <div id="addSectionModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Enroll in a Section</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <form id="enrollForm" method="POST" action="../Admin/process/enroll_section.php">
+                    <input type="text" name="section_code" placeholder="Enter Section Code" required>
+                    <button type="submit">Enroll</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Display Success/Error Messages -->
         <?php
-            if ($result->num_rows > 0){
-                while ($row = $result->fetch_assoc()){
+        if (isset($_SESSION['success_message'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
+            unset($_SESSION['success_message']);
+        }
+        if (isset($_SESSION['error_message'])) {
+            echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
+            unset($_SESSION['error_message']);
+        }
         ?>
 
         <div class="card-grid">
+            <?php
+                if ($result->num_rows > 0){
+                    while ($row = $result->fetch_assoc()){
+            ?>
             <a href="../HTML/inLessons.php?section_id=<?php echo urlencode($row['sectionID']); ?>" class="lesson-card">
                 <img src="../Resources/lesson1.jpg" alt="Lesson 1">
                 <div class="lesson-card-content">
@@ -68,13 +96,13 @@
                     <p><?php echo $row['courseDescription'];?></p>
                 </div>
             </a>
-        
-        <?php
+            <?php
+                    }
                 }
-            }
-        ?>
+            ?>
         </div>
     </div>
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -110,6 +138,7 @@
             </div>
         </div>
     </footer>
-    <script src="../JS/lesson.js"></script>
+
+    <script src="../JS/addSection.js"></script>
 </body>
 </html>

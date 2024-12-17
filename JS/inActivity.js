@@ -62,8 +62,6 @@ function updateActivity(index) {
         btn.addEventListener('click', () => checkAnswer(i));
     });
     
-    // Update progress bar
-    updateProgressBar();
     
     // Manage navigation buttons
     nextBtn.textContent = index === activities.length - 1 ? 'Done' : 'Next'; // Change text on the last question
@@ -106,12 +104,6 @@ function resetButtonStyles() {
     buttons.forEach(btn => {
         btn.classList.remove('correct', 'incorrect');
     });
-}
-
-// Function to update progress bar
-function updateProgressBar() {
-    const progress = ((currentActivityIndex + 1) / activities.length) * 100;
-    progressBar.style.width = `${progress}%`;
 }
 
 // Next button event listener

@@ -1,15 +1,11 @@
 :root {
-    --primary-color: #ffe600;
-    --mainbg: #0c1686;
-    --nav-bg: #0D4DD6;
-    --text-white: #ffffff;
-    --text-header:#0D4DD6;
-    --text-dark: #001d5c;
-    --text-light: #d1d1d1;
-    --card-bg: #ffe600;
-    --card-hover: #001d5c;
+    --WhiteSmoke: #F5F4F6;
+    --SpaceCadet: #232946;
+    --Gold: #FCD200;
+    --Mint: #3EB183;
+    --ChiliRed: #E93023;
+    --White:  #FFFFFF;
 }
-
 
 * {
     margin: 0;
@@ -19,8 +15,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-white);
+    background-color: var(--WhiteSmoke);
+    color: var(--WhiteSmoke);
     line-height: 1.5;
 }
 
@@ -30,7 +26,7 @@ body {
 }
 
 .nav-link {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -46,7 +42,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--Gold);
     transition: width 0.3s ease;
 }
 
@@ -55,7 +51,7 @@ body {
 }
 /* Header Styles */
 .header-bottom {
-    background-color: var(--nav-bg);
+    background-color: var(--SpaceCadet);
     padding: 20px 0;
     position: fixed;
     top: 0;
@@ -85,7 +81,7 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
 }
 
 .logo-image {
@@ -102,7 +98,7 @@ body {
 }
 
 .logo-text:hover {
-    color: var(--primary-color);
+    color: var(--Gold);
 }
 
 .nav-link:hover::after {
@@ -111,31 +107,51 @@ body {
 
 /* Hero Section Styles */
 .hero.about-hero {
-    background-color: var(--mainbg);
-    min-height: calc(130vh - 200px);
+    position: relative; /* Allows pseudo-elements to be positioned relative to this container */
+    background: url('/Resources/aboutbg.gif') no-repeat center center/cover; /* Adds the GIF background */
+    min-height: 100vh; /* Ensures the section fills the viewport height */
     display: flex;
     align-items: center;
-    padding: 32px 0;
+    justify-content: center; /* Centers content horizontally and vertically */
+    overflow: hidden; /* Prevents overflow if the content extends beyond the section */
+    z-index: 0; /* Base layer for the section */
 }
+
+/* Add the gradient overlay */
+.hero.about-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(128, 109, 0, 0), rgba(9, 0, 41, 0.534));
+    z-index: 1; /* Ensures the gradient is above the background but below content */
+    pointer-events: none; /* Ensures the gradient doesn't block interactions */
+}
+
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 64px;
+    z-index: 2;
 }
 
 .hero-text-content {
     flex: 1;
     animation: fadeInLeft 1s ease-out;
+    z-index: 2;
 }
 
 .welcome-text {
     font-size: 56px;
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     margin-top: 100px;
     margin-bottom: 16px;
     font-weight: 700;
+    z-index: 2;
 }
 
 .welcome-text, .brand-name {
@@ -151,6 +167,7 @@ body {
     color: transparent; 
     margin-left: 15px;
     animation: gradientMove 5s ease infinite; 
+    z-index: 2;
 }
 
 @keyframes gradientMove {
@@ -167,8 +184,9 @@ body {
 
 .hero-description {
     font-size: 24px;
-    color: var(--text-light);
+    color: var(--WhiteSmoke);
     margin-bottom: 32px;
+    z-index: 2;
 }
 
 
@@ -181,6 +199,7 @@ body {
     width: 300px;
     height: auto;
     transition: transform 0.3s ease;
+    z-index: 2;
 }
 
 .robot-mascot:hover {
@@ -197,7 +216,7 @@ body {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--nav-bg);
+    color: var(--Gold);
     position: relative;
 }
 
@@ -209,7 +228,7 @@ body {
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--Gold);
 }
 
 .team-grid {
@@ -219,7 +238,7 @@ body {
 }
 
 .proponent-card {
-    background-color: var(--card-bg);
+    background-color: var(--Gold);
     border-radius: 10px;
     padding: 2rem;
     text-align: center;
@@ -238,7 +257,7 @@ body {
     background: linear-gradient(
         transparent,
         transparent,
-        var(--nav-bg)
+        var(--SpaceCadet)
     );
     transform: rotate(45deg);
     opacity: 0;
@@ -251,7 +270,7 @@ body {
 
 .proponent-card:hover {
     transform: translateY(-15px);
-    background-color: var(--nav-bg);
+    background-color: var(--SpaceCadet);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -261,38 +280,38 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-    border: 4px solid var(--nav-bg);
+    border: 4px solid var(--SpaceCadet);
     transition: transform 0.3s ease;
 }
 
 .proponent-card:hover .proponent-image {
     transform: scale(1.1) rotate(4deg);
-    border: 4px solid var(--card-bg);
+    border: 4px solid var(--Gold);
 }
 
 .proponent-name {
     font-size: 1.5rem;
-    color: var(--text-header);
+    color: var(--SpaceCadet);
     margin-bottom: 0.5rem;
 }
 
 .proponent-details {
-    color: var(--text-header);
+    color: var(--SpaceCadet);
     font-size: 1rem;
 }
 
 .proponent-card:hover .proponent-name {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
 }
 
 .proponent-card:hover .proponent-details {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
 }
 
 /* Footer */
 .footer {
-    background-color: var(--nav-bg);
-    color: var(--text-white);
+    background-color: var(--SpaceCadet);
+    color: var(--WhiteSmoke);
     padding: 60px 0 20px;
     margin-top: 4rem;
 }
@@ -315,13 +334,13 @@ body {
 }
 
 .footer-link {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    color: var(--card-bg);
+    color: var(--Gold);
 }
 
 /* Animations */

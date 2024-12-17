@@ -36,57 +36,68 @@
     <link href="../CSS/InLessons.css" rel="stylesheet">
 </head>
 <body>
-    <header class="header-bottom">
-        <div class="container">
-            <a href="#" class="logo">COMPLITE</a>
-            <nav class="navbar">
-                <a href="../HTML/main.html" class="nav-link">Home</a>
-                <a href="../HTML/Lessons.html" class="nav-link">Lessons</a>
-                <a href="../HTML/Activity.html" class="nav-link">Activities</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Profile</a>
-            </nav>
+    <header class="header">
+        <div class="header-bottom">
+            <div class="container">
+                <a href="#" class="logo-container">
+                    <img src="/Resources/Logo.png" alt="COMPLITE Robot Mascot" class="logo-image">
+                    <span class="logo-text">COMPLITE</span>
+                </a>
+                <nav class="navbar">
+                    <a href="../HTML/main.php" class="nav-link">Home</a>
+                    <a href="../HTML/Lessons.php" class="nav-link">Lessons</a>
+                    <a href="../HTML/Activity.html" class="nav-link">Activities</a>
+                    <a href="../HTML/about.html" class="nav-link">About</a>
+                    <a href="../HTML/profile.php" class="nav-link">Profile</a>
+                    <a href="../Admin/process/logout.php" class="nav-link">Logout</a>
+                </nav>
+            </div>
         </div>
     </header>
 
+
     <body>
         <section class="lesson">
-            <h1>Lesson 1: <?php echo $title[0]; ?></h1>
-            <div class="content">
-                <p class="p1">
-                    <strong>Objective:</strong><br>
-                    <?php echo $description[0]; ?>
-                </p>
-                <h3><?php echo $content[0]?></h3>
-                <p>
-                    <?php echo $content[1]?>
-                </p>
-    
-                <div class="content1">
-                    <h3><?php echo $content[2]?></h3>
-    
-                    <!-- Input Devices Section -->
-                    <div class="row">
-                        <div class="lesson-text">
-                            <h4><strong><?php echo $content[3]?></strong></h4>
-                            <p>
-                            <?php echo $content[4]?>
-                            </p>
-                            <ul>
-                                <li><?php echo $content[4]?></li>
-                                <li><?php echo $content[6]?></li>
-                                <li><?php echo $content[7]?></li>
-                            </ul>
-                        </div>
-                        <div class="lesson-image">
-                            <img src="<?php echo "../Resources/{$picture[8]}" ?>" alt="Input Devices">
-                        </div>
-                    </div>
-
-    
-                <div class="btn-wrapper">
-                    <button onclick="window.location.href='../HTML/inActivity.html'">Done</button>
+            <div class="lesson-container">
+                <div class="character-area">
+                    <img src="../Resources/Hiro.png" alt="Character" class="character-image">
                 </div>
+                <div class="lesson-content">
+                    <h1>Lesson 1: <?php echo $title[0]; ?></h1>
+                    <div class="content">
+                        <p class="p1">
+                            <strong>Objective:</strong><br>
+                            <?php echo $description[0]; ?>
+                        </p>
+                        <h3><?php echo $content[0]?></h3>
+                        <p>
+                        <?php echo $content[1]?>
+                        </p>
+    
+                        <div class="content1">
+                            <h3><?php echo $content[2]?></h3>
+    
+                            <!-- Input Devices Section -->
+                            <div class="row">
+                                <div class="lesson-text">
+                                    <h4><strong><?php echo $content[3]?></strong></h4>
+                                    <p>
+                                    <?php echo $content[4]?>
+                                    </p>
+                                    <ul>
+                                        <li><?php echo $content[4]?></li>
+                                    <   li><?php echo $content[6]?></>
+                                    <li><?php echo $content[7]?></li>
+                                </ul>
+                            </div>
+                            <div class="lesson-image">
+                                <img src="<?php echo "../Resources/{$picture[8]}" ?>" alt="Input Devices">
+                            </div>
+                        </div>
+                    <div class="btn-wrapper">
+                        <button onclick="window.location.href='../HTML/inActivity.html'">Done</button>
+                    </div>
+            </div>
             </div>
         </section>
     </body>

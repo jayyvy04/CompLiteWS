@@ -1,16 +1,11 @@
-
 :root {
-    --primary-color: #ffe600;
-    --mainbg: #0c1686;
-    --nav-bg: #0D4DD6;
-    --text-white: #ffffff;
-    --text-header:#0D4DD6;
-    --text-dark: #001d5c;
-    --text-light: #ffffff;
-    --card-bg: #ffe600;
-    --card-hover: #001d5c;
+    --WhiteSmoke: #F5F4F6;
+    --SpaceCadet: #232946;
+    --Gold: #FCD200;
+    --Mint: #3EB183;
+    --ChiliRed: #E93023;
+    --White:  #FFFFFF;
 }
-
 
 * {
     margin: 0;
@@ -20,8 +15,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-white);
+    background-color: var(--WhiteSmoke);
+    color: var(--White);
     line-height: 1.5;
 }
 
@@ -31,7 +26,7 @@ body {
 }
 
 .nav-link {
-    color: var(--text-white);
+    color: var(--White);
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -47,7 +42,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--Gold);
     transition: width 0.3s ease;
 }
 
@@ -56,7 +51,7 @@ body {
 }
 /* Header Styles */
 .header-bottom {
-    background-color: var(--nav-bg);
+    background-color: var(--SpaceCadet);
     padding: 20px 0;
     position: fixed;
     top: 0;
@@ -86,7 +81,7 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--text-white);
+    color: var(--White);
 }
 
 .logo-image {
@@ -103,12 +98,17 @@ body {
 }
 
 .logo-text:hover {
-    color: var(--primary-color);
+    color: var(--Gold);
 }
-
 
 .main-content {
     padding: 100px 15px 50px;
+}
+
+.main-content .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .content-header {
@@ -119,6 +119,87 @@ body {
 .content-header h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.page-header {
+    margin-top: -80px;
+    padding: 80px 15px 40px;
+    background: linear-gradient(to left, #0D4DD6, #ffe600),url('/Resources/header.png'); /* Swapping the order of gradient and image */
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    border-bottom-left-radius: 12px; 
+    border-bottom-right-radius: 12px; 
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.close-modal {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+#enrollForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#enrollForm input, #enrollForm button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#addSectionBtn {
+    margin-left: 15px;
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addSectionBtn:hover {
+    background-color: #45a049;
 }
 
 .card-grid {
@@ -151,11 +232,11 @@ body {
 }
 
 .lesson-card {
-    background-color: var(--card-bg);
+    background-color: var(--Gold);
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
-    color: var(--nav-bg);
+    color: var(--SpaceCadet);
     transition: all 0.3s ease;
     display: block;
     opacity: 0;
@@ -170,8 +251,8 @@ body {
 
 .lesson-card:hover {
     transform: translateY(-5px);
-    background-color: var(--card-hover);
-    color: var(--text-light);
+    background-color: var(--Mint);
+    color: var(--WhiteSmoke);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -190,18 +271,10 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.lesson-card-content p {
-    color: var(--nav-bg);
-}
-
-.lesson-card:hover .lesson-card-content p {
-    color: var(--text-light);
-}
-
 /* Footer */
 .footer {
-    background-color: var(--nav-bg);
-    color: var(--text-white);
+    background-color: var(--SpaceCadet);
+    color: var(--WhiteSmoke);
     padding: 60px 0 20px;
     margin-top: 4rem;
 }
@@ -224,27 +297,17 @@ body {
 }
 
 .footer-link {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    color: var(--card-bg);
+    color: var(--Gold);
 }
 
 @media (max-width: 768px) {
     .content-header h1 {
         font-size: 2.5rem;
     }
-}
-
-.page-header {
-    padding: 80px 15px 40px;
-    background: linear-gradient(to right, #0D4DD6, #ffe600),url('/Resources/header.png'); /* Swapping the order of gradient and image */
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-position: center;
-    border-bottom-left-radius: 12px; 
-    border-bottom-right-radius: 12px; 
 }
