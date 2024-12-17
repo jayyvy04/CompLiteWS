@@ -1,13 +1,10 @@
 :root {
-    --primary-color: #ffe600;
-    --mainbg: #0c1686;
-    --nav-bg: #0D4DD6;
-    --text-white: #ffffff;
-    --text-header:#0D4DD6;
-    --text-dark: #001d5c;
-    --text-light: #d1d1d1;
-    --card-bg: #ffe600;
-    --card-hover: #001d5c;
+    --WhiteSmoke: #F5F4F6;
+    --SpaceCadet: #232946;
+    --Gold: #FCD200;
+    --Mint: #3EB183;
+    --ChiliRed: #E93023;
+    --White:  #FFFFFF;
 }
 
 * {
@@ -18,7 +15,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: var(--text-white);
+    background-color: var(--WhiteSmoke);
     line-height: 1.5;
 }
 
@@ -28,7 +25,7 @@ body {
 }
 
 .nav-link {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -44,7 +41,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--Gold);
     transition: width 0.3s ease;
 }
 
@@ -53,7 +50,7 @@ body {
 }
 /* Header Styles */
 .header-bottom {
-    background-color: var(--nav-bg);
+    background-color: var(--SpaceCadet);
     padding: 20px 0;
     position: fixed;
     top: 0;
@@ -83,7 +80,7 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
 }
 
 .logo-image {
@@ -100,7 +97,7 @@ body {
 }
 
 .logo-text:hover {
-    color: var(--primary-color);
+    color: var(--Gold);
 }
 
 /* Profile Container Styles */
@@ -110,7 +107,7 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 100px 20px 50px;
-    background-color: var(--text-white);
+    background-color: var(--WhiteSmoke);
     gap: 4rem;
 }
 
@@ -119,14 +116,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--mainbg);
+    background-color: var(--SpaceCadet);
     padding: 2rem;
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 .profile-picture:hover {
-    background-color: var(--nav-bg);
     transform: translateY(-5px);
 }
 
@@ -136,13 +132,13 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-    border: 4px solid var(--primary-color);
+    border: 4px solid var(--Gold);
 }
 
 .upload-label {
-    background-color: var(--primary-color);
+    background-color: var(--Gold);
     font-weight: 600;
-    color: var(--nav-bg);
+    color: var(--SpaceCadet);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     cursor: pointer;
@@ -159,8 +155,8 @@ body {
 
 .profile-details {
     margin-top: 40px;
-    background-color: var(--mainbg);
-    color: var(--text-white);
+    background-color: var(--SpaceCadet);
+    color: var(--WhiteSmoke);
     padding: 2rem;
     border-radius: 12px;
     width: 500px;
@@ -168,12 +164,11 @@ body {
 }
 
 .profile-details:hover {
-    background-color: var(--nav-bg);
     transform: translateY(-5px);
 }
 
 .profile-details h1 {
-    color: var(--text-white);
+    color: var(--Gold);
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -187,19 +182,19 @@ body {
 .profile-detail {
     display: flex;
     flex-direction: column;
-    background-color: var(--card-bg);
+    background-color: var(--Gold);
     padding: 1rem;
     border-radius: 8px;
 }
 
 .detail-label {
-    color: var(--nav-bg);
+    color: var(--SpaceCadet);
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
 }
 
 .detail-value {
-    color: var(--nav-bg);
+    color: var(--SpaceCadet);
     font-weight: 600;
 }
 
@@ -209,8 +204,8 @@ body {
     width: 100%;
     margin-top: 2rem;
     padding: 1rem;
-    background-color: var(--card-bg);
-    color: var(--nav-bg);
+    background-color: var(--Gold);
+    color: var(--SpaceCadet);
     border: none;
     border-radius: 30px;
     font-weight: 750;
@@ -224,8 +219,8 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--nav-bg);
-    color: var(--text-white);
+    background-color: var(--SpaceCadet);
+    color: var(--WhiteSmoke);
     padding: 60px 0 20px;
     margin-top: 4rem;
 }
@@ -248,13 +243,13 @@ body {
 }
 
 .footer-link {
-    color: var(--text-white);
+    color: var(--WhiteSmoke);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    color: var(--card-bg);
+    color: var(--Gold);
 }
 
 /* Responsive Design */

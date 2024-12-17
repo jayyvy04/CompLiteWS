@@ -1,51 +1,95 @@
-/* Reset and body styling */
-body, html {
+:root {
+  --WhiteSmoke: #F5F4F6;
+  --SpaceCadet: #232946;
+  --Gold: #FCD200;
+  --Mint: #3EB183;
+  --ChiliRed: #E93023;
+  --White:  #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  height: 100%;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header styling */
-.header {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
   background-color: #f4f4f4;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
 }
 
-.header-bottom .container {
+.header-bottom {
+  background-color: var(--SpaceCadet);
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.container {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0 15px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: var(--WhiteSmoke);
 }
 
 .logo-image {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+  height: 40px;
+  margin-right: 12px;
 }
 
-.navbar .nav-link {
-  margin: 0 10px;
+.logo-text {
+  font-size: 40px;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+.logo-text:hover {
+  color: var(--Gold);
+}
+
+.navbar {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--White);
   text-decoration: none;
-  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.navbar .nav-link:hover {
-  color: #007BFF;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--Gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 .titleAct{
@@ -55,20 +99,28 @@ body {
 /* Main content styling */
 main {
   display: flex;
-  flex-direction: row;
-  flex: 1;
+  flex-direction: column; /* Changed to column for better mobile responsiveness */
+  min-height: calc(100vh - 120px); /* Subtract header and footer height */
   background-color: #f9f9f9;
   padding: 20px;
-  gap: 20px; /* Adds space between Character Area and Activity */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  height: 100%; /* Ensures it takes up full height for centering */
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px; /* Adjust for fixed header */
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    flex-direction: row; /* Row layout for larger screens */
+    align-items: stretch; /* Stretch items to same height */
+  }
 }
 
 /* Character Area */
 .character-area {
-  height: 600px;
-  flex: 0 0 500px; /* Fixed width for Character Area */
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,26 +128,33 @@ main {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+  .character-area {
+    width: 500px;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
 }
 
 .character-image {
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* Activity Area */
-/* Activity Area */
 .activity {
-  flex: 0 1 800px; /* Let the activity area grow, but don't force it to a fixed size */
+  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 100%; /* Make sure it doesn't exceed the viewport width */
-  width: auto; /* Automatically adjusts to the content size */
-  box-sizing: border-box; /* Ensures padding doesn't affect the width */
 }
 
 /* Activity Image Styling */
@@ -183,11 +242,14 @@ main {
   background-color: #0056b3;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-  background-color: #f4f4f4;
+  background-color: var(--SpaceCadet);
+  color: var(--WhiteSmoke);
   text-align: center;
-  padding: 10px 0;
-  font-size: 0.9em;
-  border-top: 1px solid #ddd;
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
 }

@@ -94,9 +94,23 @@
                                 <img src="<?php echo "../Resources/{$picture[8]}" ?>" alt="Input Devices">
                             </div>
                         </div>
-                    <div class="btn-wrapper">
-                        <button onclick="window.location.href='../HTML/inActivity.html'">Done</button>
-                    </div>
+                        <div class="btn-wrapper">
+        <button id="doneBtn">Done</button>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ready to Proceed?</h2>
+                <p>Are you sure you want to start this activity?</p>
+            </div>
+            <div class="modal-buttons">
+                <button id="cancelBtn" class="btn btn-cancel">Cancel</button>
+                <button id="confirmBtn" class="btn btn-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
             </div>
             </div>
         </section>
@@ -107,7 +121,7 @@
     </footer>
     
     <script src="../JS/lessons.js"></script>
-
+    <script src="../JS/lessonModal.js"></script>
 </html>
 
 <?php
